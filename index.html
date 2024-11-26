@@ -3,129 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to My Personal Website">
-    <title>[Your Name] - Portfolio</title>
+    <meta name="description" content="Personal Website">
+    <title>Hello, I'm [Your Name]</title>
     <style>
-        :root {
-            --dark-green: #2f4f4f;
-            --sage-green: #9caf88;
-            --light-green: #e6f0e6;
-            --accent-color: #d1e7dd;
-            --text-color: #ffffff;
-        }
-
+        /* Global Styles */
         body {
-            font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: var(--dark-green);
-            color: var(--text-color);
+            font-family: 'Georgia', serif;
             line-height: 1.6;
+            background: linear-gradient(135deg, #ff6a00, #ee0979, #bd10e0, #fdf497);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
-        header {
-            background: var(--sage-green);
-            color: var(--dark-green);
-            padding: 1.5rem 0;
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Main Container */
+        .container {
             text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        nav {
-            margin: 1rem 0;
-        }
-
-        nav a {
-            margin: 0 1rem;
-            color: var(--dark-green);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        main {
-            max-width: 900px;
-            margin: 2rem auto;
+            max-width: 800px;
             padding: 2rem;
-            background: var(--light-green);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        section {
-            margin-bottom: 2rem;
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 0;
+            color: #222;
         }
 
         h2 {
-            color: var(--dark-green);
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0.5rem 0 1.5rem 0;
+            color: #444;
         }
 
-        .contact a {
-            color: var(--dark-green);
-            text-decoration: none;
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 0.5rem 0;
+            color: #555;
         }
 
-        .contact a:hover {
+        .highlight {
+            font-weight: bold;
             text-decoration: underline;
         }
 
-        footer {
-            text-align: center;
-            padding: 1rem 0;
-            background: var(--sage-green);
-            color: var(--dark-green);
-            margin-top: 2rem;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            main {
-                padding: 1rem;
-            }
+        hr {
+            margin: 2rem 0;
+            border: none;
+            border-top: 1px solid #ddd;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>[Your Name]</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-    <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>
-                Hi! I'm [Your Name], a passionate [your profession or role] with an interest in [your interests, e.g., web development, design, or research]. 
-                I love solving problems, building creative solutions, and sharing my knowledge with others.
-            </p>
-        </section>
-        <section id="projects">
-            <h2>Projects</h2>
-            <ul>
-                <li><strong>Project 1:</strong> <a href="#">Cool Web App</a> - A brief description of your app.</li>
-                <li><strong>Project 2:</strong> <a href="#">Data Analysis Dashboard</a> - Insights and data visualization.</li>
-                <li><strong>Project 3:</strong> <a href="#">Personal Blog</a> - Sharing ideas and tutorials.</li>
-            </ul>
-        </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <p class="contact">
-      
+    <div class="container">
+        <h1>Hello, I'm [Your Name].</h1>
+        <h2>I'm a [Your Profession].</h2>
+        <p>
+            I have [X years] of experience at <span class="highlight">[Company 1]</span>, 
+            <span class="highlight">[Company 2]</span>, and <span class="highlight">[Company 3]</span>.
+        </p>
+        <p>
+            I value <span class="highlight">clarity</span>, 
+            <span class="highlight">empathy</span>, and <span class="highlight">integrity</span> above all else. 
+            These ideals guide my approach to problem-solving and life in general.
+        </p>
+        <hr>
+    </div>
+</body>
+</html>
