@@ -3,10 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Page</title>
+    <meta name="description" content="Welcome to My Personal Website">
+    <title>[Your Name] - Portfolio</title>
+    <style>
+        :root {
+            --dark-green: #2f4f4f;
+            --sage-green: #9caf88;
+            --light-green: #e6f0e6;
+            --accent-color: #d1e7dd;
+            --text-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-green);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--sage-green);
+            color: var(--dark-green);
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav {
+            margin: 1rem 0;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            color: var(--dark-green);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--light-green);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact a {
+            color: var(--dark-green);
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: var(--sage-green);
+            color: var(--dark-green);
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is a test page to verify GitHub Pages is working.</p>
-</body>
-</html>
+    <header>
+        <h1>[Your Name]</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                Hi! I'm [Your Name], a passionate [your profession or role] with an interest in [your interests, e.g., web development, design, or research]. 
+                I love solving problems, building creative solutions, and sharing my knowledge with others.
+            </p>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <ul>
+                <li><strong>Project 1:</strong> <a href="#">Cool Web App</a> - A brief description of your app.</li>
+                <li><strong>Project 2:</strong> <a href="#">Data Analysis Dashboard</a> - Insights and data visualization.</li>
+                <li><strong>Project 3:</strong> <a href="#">Personal Blog</a> - Sharing ideas and tutorials.</li>
+            </ul>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p class="contact">
+      
