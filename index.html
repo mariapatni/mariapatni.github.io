@@ -4,153 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal Website">
-    <title>Hello, I'm [Your Name]</title>
-    <style>
-       
-       /* Global Styles */
-        body {
-            margin: 0;
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            background: #022719;
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            height: 100vh;
-        }
-
-        .container {
-            width: 80%; /* Ensures consistent width across sections */
-            margin: 0 auto; /* Centers the container */
-            padding-left: 2rem; /* Adds consistent left padding */
-            padding-right: 2rem; /* Adds consistent right padding */
-            box-sizing: border-box; /* Ensures padding is included in width */
-        }
-
-
-        .transparent-container {
-            background-color: transparent;            
-            padding: 2rem;
-            border-radius: 10px;
-            width: 80%;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin: 0;
-            color: #ffffff;
-        }
-
-        h2 {
-            font-size: 2rem;
-            font-weight: bold;
-            margin: 0.5rem 0 1.5rem 0;
-            color: #444;
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin: 0.5rem 0;
-            color: #bababa;
-        }
-
-        .highlight {
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-        .my-image {
-            width: 300px;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        hr {
-            margin: 2rem 0;
-            border: none;
-            border-top: 1px solid #ddd;
-        }
-
-        .bio-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin: 2rem 0;
-            padding: 1rem;
-        }
-
-        .bio {
-            flex: 1;
-            padding-right: 1rem;
-        }
-
-        .bio h2 {
-            margin-bottom: 1rem;
-        }
-
-        .bio p {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #ffffff;
-        }
-
-        .photo {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .photo img {
-            max-width: 80%;
-            height: 50%;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-
-    </style>
+    <title>Maria Patni</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Header Section -->
+    <header class="hero">
+        <h1>Maria Patni</h1>
+        <p>Robotics | Machine Learning | Computer Vision</p>
+    </header>
 
-    <!-- Main Introduction Section -->
-    <!-- <section class="transparent-container container">
-        <h1>Hello, I'm Maria.</h1>
-        <h2>I'm a Roboticist.</h2>
-        <p>
-            I have [X years] of experience at <span class="highlight">[Company 1]</span>, 
-            <span class="highlight">[Company 2]</span>, and <span class="highlight">[Company 3]</span>.
-        </p>
-        <p>
-            I value <span class="highlight">clarity</span>, 
-            <span class="highlight">empathy</span>, and <span class="highlight">integrity</span> above all else. 
-            These ideals guide my approach to problem-solving and life in general.
-        </p>
-        <hr>
-    </section> -->
-
-
-    <!-- About Me Section -->
-    <section class="bio-section container">
-        <div class="bio">
-            <h1>About Me</h1>
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2>About Me</h2>
             <p>
-                Hi, I'm Maria. I'm passionate about robotics and technology. 
-                In my free time, I enjoy hiking, painting, and exploring new ideas. Let's connect!
+                Hi, I'm Maria. I'm passionate about robotics, machine learning, and computer vision. 
+                I enjoy developing algorithms and systems that solve complex problems in real-world scenarios. 
+                In my free time, I love hiking and painting.
             </p>
         </div>
-        <div class="photo">
-            <img src="images/headshot.jpg" alt="Maria's Photo" />
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <ul>
+                <li><a href="#">Project 1: Robotic Manipulation</a></li>
+                <li><a href="#">Project 2: Computer Vision for Autonomous Systems</a></li>
+                <li><a href="#">Project 3: Deep Reinforcement Learning</a></li>
+            </ul>
         </div>
     </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Maria Patni</p>
+            <p><a href="mailto:maria@example.com">maria@example.com</a></p>
+        </div>
+    </footer>
 </body>
 </html>
