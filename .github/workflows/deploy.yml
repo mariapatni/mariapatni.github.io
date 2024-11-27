@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Replace with your branch name if different
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js (optional, only for static site generators)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16 # Replace with your required version
+
+      # Step 3: Install dependencies (if any, optional)
+      - name: Install dependencies
+        run: |
+          npm install # Replace with your package manager if applicable
+
+      # Step 4: Build the project (optional for static sites)
+      - name: Build the project
+        run: |
+          npm run build # Replace with your build command if applicable
+
+      # Step 5: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ # Replace with your output directory (e.g., `dist`)
