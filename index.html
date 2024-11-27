@@ -164,6 +164,16 @@
             </p>
         </div>
     </section>
+    <!-- JavaScript placed here -->
+    <script>
+        const toggleButton = document.getElementById("toggleBio");
+        const extraBio = document.getElementById("extraBio");
+
+        toggleButton.addEventListener("click", () => {
+            extraBio.classList.toggle("hidden");
+            toggleButton.textContent = extraBio.classList.contains("hidden") ? "Learn More" : "Show Less";
+        });
+    </script>
     <hr>
 
 
