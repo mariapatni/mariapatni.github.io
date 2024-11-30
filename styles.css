@@ -49,27 +49,30 @@ nav a:hover {
 .profile-content {
     flex: 1;
 }
+
 .profile-image {
     width: 100%;
     height: auto;
-    max-width: 200px; /* Set a maximum width to preserve dimensions */
+    max-width: 200px;
     border-radius: 50%;
     margin-bottom: 1rem;
 }
-
-/* .profile-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin-bottom: 1rem;
-} */
 
 .contact-links {
     list-style: none;
     padding: 0;
 }
 
-/* Add these media queries at the end of your CSS */
+/* Default state (dark green) */
+.contact-links a {
+    color: #0c291e !important;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Mobile state (cream color) */
 @media screen and (max-width: 768px) {
     .profile-section {
         flex-direction: column;
@@ -77,167 +80,104 @@ nav a:hover {
     }
 
     .profile-sidebar {
-        flex: 1;
-        text-align: center;
-    }
-
-    .container {
-        padding: 1rem;
-        margin: 0;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .header-container {
-        margin: 0;
-        padding: 0 1rem;
-    }
-
-    .profile-image {
-        width: 150px;
-        height: 150px;
-        margin: 0 auto 1rem auto;
-    }
-
-    .experience-item {
-        padding: 1rem;
-        margin: 1rem 0;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .profile-content {
-        width: 100%;
-        padding: 0 0.5rem;
-        box-sizing: border-box;
-    }
-
-    body {
-        padding-top: 70px;
-    }
-
-    footer {
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
-        margin-right: calc(-50vw + 50%);
-        padding: 0.8rem;
-    }
-
-    .footer-container {
-        width: 100%;
-        padding: 0 1rem;
-        margin: 0;
-        box-sizing: border-box;
-    }
-
-    /* Improve text readability */
-    p, li {
-        font-size: 16px;
-        line-height: 1.6;
-    }
-
-    /* Increase touch targets */
-    .contact-links li {
-        margin: 1rem 0;
-        padding: 0.5rem 0;
-    }
-
-    .contact-links a {
-        padding: 0.5rem 0;
-        display: inline-block;
-        min-height: 44px; /* Minimum touch target size */
-    }
-
-    /* Improve navigation */
-    nav {
-        justify-content: space-around;
-        width: 100%;
-    }
-
-    nav a {
-        padding: 0.5rem 1rem;
-        min-width: 80px;
-        text-align: center;
-    }
-
-    /* Adjust spacing */
-    .experience-item {
-        padding: 1.2rem;
-        margin: 1rem 0;
-    }
-
-    /* Improve header behavior */
-    header {
-        height: auto;
-        min-height: 60px;
-        display: flex;
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    h1 {
-        font-size: 1.75rem;
-    }
-
-    h2 {
-        font-size: 1.25rem;
-    }
-
-    .contact-links {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100vh;
+        width: 80%;
+        max-width: 300px;
+        background: #0c291e;
+        z-index: 999;
+        padding: 20px;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    nav {
-        gap: 1rem;
+    .profile-sidebar.active {
+        left: 0;
     }
 
-    nav a {
-        padding: 0.2rem 0.8rem;
-        font-size: 0.9rem;
+    .profile-sidebar .contact-links {
+        width: 100%;
+        padding: 0;
+        margin-top: 2rem;
     }
 
-    .container {
-        padding: 1rem 0.5rem;
+    .profile-sidebar .contact-links li {
+        margin: 0.8rem 0;
+        width: 100%;
     }
 
-    .experience-item {
-        margin: 1rem -0.5rem;
-        width: calc(100% + 1rem);
-    }
-
-    /* Further optimize for smaller screens */
-    body {
-        padding-top: 60px;
-    }
-
-    .profile-image {
-        width: 120px;
-        height: 120px;
-    }
-
-    .experience-item {
-        padding: 1rem;
-    }
-
-    h3 {
+    .profile-sidebar .contact-links a,
+    .profile-sidebar.active .contact-links a {
+        color: #f5f5dc !important;
         font-size: 1.1rem;
-    }
-
-    /* Improve list readability */
-    ul {
-        padding-left: 20px;
-    }
-
-    /* Adjust container padding */
-    .container {
         padding: 0.8rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+    }
+
+    .profile-sidebar .contact-links a:hover,
+    .profile-sidebar .contact-links a:active {
+        background-color: rgba(245, 245, 220, 0.1);
+        text-decoration: none;
+    }
+
+    .profile-sidebar h1,
+    .profile-sidebar p,
+    .profile-sidebar.active h1,
+    .profile-sidebar.active p {
+        color: #ffffff !important;
+        text-align: center;
+    }
+
+    .mobile-menu-button {
+        display: block;
+        position: fixed;
+        left: 20px;
+        top: 15px;
+        z-index: 1001;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    .profile-sidebar.active .contact-links a {
+        color: #f5f5dc !important;
+    }
+    
+    .profile-sidebar.active h1,
+    .profile-sidebar.active p {
+        color: #ffffff !important;
     }
 }
 
-/* Update footer styles */
 footer {
     background: #0c291e;
     color: #ffffff;

@@ -170,6 +170,101 @@
             padding: 0 1rem;
             text-align: center;
         }
+
+        /* Add these new styles for the mobile menu */
+        .mobile-menu-button {
+            display: none;
+            position: fixed;
+            left: 20px;
+            top: 15px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+
+        @media screen and (max-width: 768px) {
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .profile-sidebar {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                background: #0c291e;
+                z-index: 999;
+                padding: 20px;
+                transition: left 0.3s ease;
+                overflow-y: auto;
+                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            }
+
+            .profile-sidebar.active {
+                left: 0;
+            }
+
+            .sidebar-overlay.active {
+                display: block;
+            }
+
+            .profile-sidebar .close-button {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 24px;
+                cursor: pointer;
+                display: none; /* Hide close button in web mode */
+            }
+
+            @media screen and (max-width: 768px) {
+                .profile-sidebar .close-button {
+                    display: block; /* Show close button in mobile mode */
+                }
+            }
+
+            /* Adjust header for menu button */
+            .header-container {
+                padding-left: 60px;
+            }
+
+            .profile-sidebar.active .contact-links a {
+                color: #f5f5dc; /* Cream color when sidebar is active in mobile */
+            }
+        }
+
+        .profile-sidebar p {
+            color: #666666; /* Light gray color */
+            margin: 0.5rem 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            /* ... existing mobile styles ... */
+            
+            .profile-sidebar.active p {
+                color: #cccccc; /* Lighter gray for mobile menu */
+            }
+        }
     </style>
 </head>
 <body>
@@ -191,12 +286,12 @@
                 <h1>Maria Patni</h1>
                 <p>Robotics Software Engineer</p>
                 
-                <ul class="contact-links" style="padding: 0; margin: 0; list-style: none;">
-                    <li style="margin-bottom: 1rem;"><a href="https://robotics.umich.edu/"><i class="fas fa-map-marker"></i> University of Michigan</a></li>
-                    <li style="margin-bottom: 1rem;"><a href="mailto:mpatni@umich.edu"><i class="fas fa-envelope"></i> mpatni@umich.edu</a></li>
-                    <li style="margin-bottom: 1rem;"><a href="https://github.com/mariapatni"><i class="fab fa-github"></i> GitHub</a></li>
-                    <li style="margin-bottom: 1rem;"><a href="https://www.linkedin.in/mariapatni"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                    <li style="margin-bottom: 1rem;"><a href="files/resume.pdf" class="cv-link"><i class="fas fa-file"></i> View CV</a></li>
+                <ul class="contact-links">
+                    <li><a href="https://robotics.umich.edu/"><i class="fas fa-map-marker"></i> University of Michigan</a></li>
+                    <li><a href="mailto:mpatni@umich.edu"><i class="fas fa-envelope"></i> mpatni@umich.edu</a></li>
+                    <li><a href="https://github.com/mariapatni"><i class="fab fa-github"></i> GitHub</a></li>
+                    <li><a href="https://www.linkedin.in/mariapatni"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a href="files/resume.pdf" class="cv-link"><i class="fas fa-file"></i> View CV</a></li>
                 </ul>
             </div>
 
@@ -261,6 +356,9 @@
         </div>
     </footer>
 
+    <button class="mobile-menu-button" aria-label="Menu">☰</button>
+    <div class="sidebar-overlay"></div>
+
     <script>
         let lastScrollPosition = window.pageYOffset;
         let ticking = false;
@@ -292,6 +390,38 @@
             element.addEventListener('touchend', function() {
                 this.style.opacity = '1';
             });
+        });
+
+        // Mobile menu functionality
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const sidebar = document.querySelector('.profile-sidebar');
+        const overlay = document.querySelector('.sidebar-overlay');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        }
+
+        menuButton?.addEventListener('click', toggleMenu);
+        overlay?.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking a link
+        sidebar.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     </script>
 </body>
