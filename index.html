@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="description" content="Personal Website">
     <title>maria patni</title>
+    <meta name="theme-color" content="#0c291e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <style>
         /* Global Styles */
         body {
@@ -260,19 +263,35 @@
 
     <script>
         let lastScrollPosition = window.pageYOffset;
+        let ticking = false;
         
         window.addEventListener('scroll', function() {
-            const currentScrollPosition = window.pageYOffset;
-            const header = document.querySelector('header');
-            
-            if (currentScrollPosition < lastScrollPosition) {
-                header.style.top = '0';
-            } 
-            else {
-                header.style.top = '-60px';
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    const currentScrollPosition = window.pageYOffset;
+                    const header = document.querySelector('header');
+                    
+                    if (currentScrollPosition < lastScrollPosition || currentScrollPosition < 50) {
+                        header.style.top = '0';
+                    } else {
+                        header.style.top = '-60px';
+                    }
+                    
+                    lastScrollPosition = currentScrollPosition;
+                    ticking = false;
+                });
+                
+                ticking = true;
             }
-            
-            lastScrollPosition = currentScrollPosition;
+        });
+
+        document.querySelectorAll('a, button').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.style.opacity = '0.7';
+            });
+            element.addEventListener('touchend', function() {
+                this.style.opacity = '1';
+            });
         });
     </script>
 </body>

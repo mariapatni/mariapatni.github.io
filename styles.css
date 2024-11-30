@@ -129,6 +129,50 @@ nav a:hover {
         margin: 0;
         box-sizing: border-box;
     }
+
+    /* Improve text readability */
+    p, li {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    /* Increase touch targets */
+    .contact-links li {
+        margin: 1rem 0;
+        padding: 0.5rem 0;
+    }
+
+    .contact-links a {
+        padding: 0.5rem 0;
+        display: inline-block;
+        min-height: 44px; /* Minimum touch target size */
+    }
+
+    /* Improve navigation */
+    nav {
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    nav a {
+        padding: 0.5rem 1rem;
+        min-width: 80px;
+        text-align: center;
+    }
+
+    /* Adjust spacing */
+    .experience-item {
+        padding: 1.2rem;
+        margin: 1rem 0;
+    }
+
+    /* Improve header behavior */
+    header {
+        height: auto;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -163,6 +207,34 @@ nav a:hover {
         margin: 1rem -0.5rem;
         width: calc(100% + 1rem);
     }
+
+    /* Further optimize for smaller screens */
+    body {
+        padding-top: 60px;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .experience-item {
+        padding: 1rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Improve list readability */
+    ul {
+        padding-left: 20px;
+    }
+
+    /* Adjust container padding */
+    .container {
+        padding: 0.8rem;
+    }
 }
 
 /* Update footer styles */
@@ -174,6 +246,7 @@ footer {
     width: 100%;
     box-sizing: border-box;
 }
+
 
 
 
