@@ -115,6 +115,20 @@ nav a:hover {
     body {
         padding-top: 70px;
     }
+
+    footer {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        padding: 0.8rem;
+    }
+
+    .footer-container {
+        width: 100%;
+        padding: 0 1rem;
+        margin: 0;
+        box-sizing: border-box;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -149,6 +163,16 @@ nav a:hover {
         margin: 1rem -0.5rem;
         width: calc(100% + 1rem);
     }
+}
+
+/* Update footer styles */
+footer {
+    background: #0c291e;
+    color: #ffffff;
+    padding: 0.8rem 0;
+    margin-top: 4rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 
