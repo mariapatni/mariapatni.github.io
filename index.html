@@ -6,197 +6,257 @@
     <meta name="description" content="Personal Website">
     <title>Hello, I'm [Your Name]</title>
     <style>
-       
-       /* Global Styles */
+        /* Global Styles */
         body {
             margin: 0;
-            font-family: 'Georgia', serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            background: #022719;
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            height: 100vh;
+            background: #ffffff;
+            color: #333333;
+            display: block;
+            height: 100%;
+            padding-top: 100px;
         }
 
         .container {
-            width: 80%; /* Ensures consistent width across sections */
-            margin: 0 auto; /* Centers the container */
-            padding-left: 2rem; /* Adds consistent left padding */
-            padding-right: 2rem; /* Adds consistent right padding */
-            box-sizing: border-box; /* Ensures padding is included in width */
-        }
-
-
-        .transparent-container {
-            background-color: transparent;            
-            padding: 2rem;
-            border-radius: 10px;
-            width: 80%;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: bold;
+            max-width: 1000px;
             margin: 0;
-            color: #ffffff;
+            padding: 0 2rem;
+            margin-left: 2rem;
         }
 
-        h2 {
-            font-size: 2rem;
-            font-weight: bold;
-            margin: 0.5rem 0 1.5rem 0;
-            color: #444;
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin: 0.5rem 0;
-            color: #bababa;
-        }
-
-        .highlight {
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-        .my-image {
-            width: 300px;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        hr {
-            margin: 2rem 0;
-            border: none;
-            border-top: 1px solid #ddd;
-        }
-
-        .bio-section {
+        .profile-section {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin: 2rem 0;
-            padding: 1rem;
+            gap: 4rem;
+            margin-top: 2rem;
         }
 
-        .bio {
+        .profile-sidebar {
+            flex: 0 0 250px;
+        }
+
+        .profile-content {
             flex: 1;
-            padding-right: 1rem;
         }
 
-        .bio h2 {
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
             margin-bottom: 1rem;
         }
 
-        .bio p {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #ffffff;
+        .contact-links {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
         }
 
-        .photo {
-            flex: 1;
+        .contact-links li {
+            margin: 0.5rem 0;
+        }
+
+        .contact-links a {
+            color: #0c291e;
+            text-decoration: none;
             display: flex;
-            justify-content: center;
             align-items: center;
+            gap: 0.5rem;
         }
 
-        .photo img {
-            max-width: 80%;
-            height: 50%;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        h1 {
+            font-size: 2rem;
+            color: #0c291e;
+            margin: 0;
         }
 
-                /* Initially hide the extra bio section */
-        .hidden {
-            display: none;
+        h2 {
+            font-size: 1.5rem;
+            color: #0c291e;
+            margin: 2rem 0 1rem;
         }
 
-        #toggleBio {
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            background-color: #007acc;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        a {
+            color: #0c291e;
         }
 
-        #toggleBio:hover {
-            background-color: #005f99;
+        /* Add these new styles after your existing styles */
+        .experience-item {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border-left: 4px solid #0c291e;
+            background: rgba(12, 41, 30, 0.03);
+            border-radius: 0 8px 8px 0;
         }
 
+        .experience-item h3 {
+            color: #0c291e;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(12, 41, 30, 0.2);
+            padding-bottom: 0.5rem;
+        }
 
+        .experience-item p {
+            margin-bottom: 0;
+        }
+
+        /* Add these new styles */
+        header {
+            background: #0c291e;
+            padding: 0.8rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            transition: top 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        footer {
+            background: #0c291e;
+            color: #ffffff;
+            padding: 0.8rem 0;
+            margin-top: 4rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0;
+            padding: 0 2rem;
+            margin-left: 2rem;
+        }
+
+        .footer-container {
+            max-width: 1000px;
+            margin: 0;
+            padding: 0 2rem;
+            margin-left: 2rem;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
-
-    <!-- Main Introduction Section -->
-    <!-- <section class="transparent-container container">
-        <h1>Hello, I'm Maria.</h1>
-        <h2>I'm a Roboticist.</h2>
-        <p>
-            I have [X years] of experience at <span class="highlight">[Company 1]</span>, 
-            <span class="highlight">[Company 2]</span>, and <span class="highlight">[Company 3]</span>.
-        </p>
-        <p>
-            I value <span class="highlight">clarity</span>, 
-            <span class="highlight">empathy</span>, and <span class="highlight">integrity</span> above all else. 
-            These ideals guide my approach to problem-solving and life in general.
-        </p>
-        <hr>
-    </section> -->
-
-
-    <!-- About Me Section -->
-    <section class="bio-section container">
-        <div class="bio">
-            <h1>Hello, I'm Maria.</h1>
-            <h2>About Me</h2>
-            <p>
-                Hi! I'm passionate about robotics and technology. 
-                In my free time, I enjoy hiking, painting, and exploring new ideas. Let's connect!
-            </p>
-            <button id="toggleBio">Learn More</button>
+    <header>
+        <div class="header-container">
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#experience">Experience</a>
+            </nav>
         </div>
-        <div class="photo">
-            <img src="images/headshot.jpg" alt="Maria's Photo" />
+    </header>
+
+    <div class="container">
+        <div id="home" class="profile-section">
+            <div class="profile-sidebar">
+                <img src="images/headshot.jpg" alt="Profile photo" class="profile-image">
+                <h1>Maria Patni</h1>
+                <p>Robotics Software Engineer</p>
+                
+                <ul class="contact-links">
+                    <li><a href="https://robotics.umich.edu/"><i class="fas fa-map-marker"></i> University of Michigan - Ann Arbor</a></li>
+                    <li><a href="mailto:mpatni@umich.edu"><i class="fas fa-envelope"></i> mpatni@umich.edu</a></li>
+                    <li><a href="https://github.com/mariapatni"><i class="fab fa-github"></i> GitHub</a></li>
+                    <li><a href="https://www.linkedin.in/mariapatni"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+
+            <div class="profile-content">
+                <h2>Background</h2>
+                <p>I am a Computer Science student at the University of Michigan, focusing on robotics and autonomous systems. I currently work in the <a href="https://mmintlab.com">Michigan Model-based Manipulation and Interaction Lab</a>, where I research robotic manipulation and control. My broader research interests span robotic perception, control systems, and machine learning applications in robotics.</p>
+
+                <h2>Research Interests</h2>
+                <p>I am particularly interested in the intersection of robotics and machine learning, focusing on:</p>
+                <ul>
+                    <li>Robotic manipulation and control</li>
+                    <li>Model-based planning and control</li>
+                    <li>Hardware-software integration in robotics</li>
+                    <li>Machine learning applications in autonomous systems</li>
+                </ul>
+
+                <h2 id="experience">Experience</h2>
+
+                <div class="experience-item">
+                    <h3>Viam (May 2024 - August 2024)</h3>
+                    <p>At Viam in New York, I worked on expanding hardware support for robotics applications. My main projects included developing a custom pin control library for the RaspberryPi5, supporting features like PWM, GPIO, and pull up/down resistors. I also integrated MIMO capabilities into Viam's control systems package to enhance PID controller performance.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>EverestLabs (May 2023 - August 2023)</h3>
+                    <p>While at EverestLabs, I focused on improving robotic perception and manipulation for waste sorting systems. I prototyped six different algorithms for determining optimal contact surfaces for FANUC robots and built infrastructure for object height data collection and depth map generation through preliminary testing.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Zipline (May 2022 - August 2022)</h3>
+                    <p>During my time at Zipline, I worked on drone serviceability solutions and site integration. I designed and built prototypes for various drone serviceability concepts and ground support equipment. My work led to being listed as an inventor on two patents filed in 2023.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Georgia Tech Biorobotics Lab (September 2021 - May 2022)</h3>
+                    <p>As an undergraduate researcher, I worked on two major projects:</p>
+                    <ul>
+                        <li>A vascular access cannulation device, collaborating with Emory School of Medicine to improve vein visibility during IV insertion for hypovolemic patients</li>
+                        <li>The AutoSpine Robot project, where I designed a body-conforming mounting system with 6 degrees of freedom for performing radiofrequency ablation procedures</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Zipline (June 2021 - August 2021)</h3>
+                    <p>In my first role at Zipline, I focused on improving delivery accuracy for drone operations. I created standardized testing procedures for mass testing and package behavior analysis, investigated outlier delivery cases, and implemented design changes that improved drop accuracy by 30%.</p>
+                </div>
+
+                <h2>Patents</h2>
+                <p>Issued by Zipline International Inc., June 2023:</p>
+                <ul>
+                    <li>Patent Assignment P308479.US.03 - "DOCKING CONFIGURATIONS FOR AERIAL VEHICLES"</li>
+                    <li>Patent Assignment P308479.US.04 - "DOCKING CONFIGURATIONS FOR AERIAL VEHICLES"</li>
+                </ul>
+            </div>
         </div>
-    </section>
-    <section id="extraBio" class="hidden">
-        <div class="container">
-            <h2>My Journey</h2>
-            <p>
-                Over the years, I've worked on exciting projects ranging from autonomous vehicles 
-                to robotic manipulation. I believe in leveraging technology to create positive 
-                societal impact and continuously strive to learn and grow in my field.
-            </p>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <p>© 2024 Maria Patni</p>
         </div>
-    </section>
-    <!-- JavaScript placed here -->
+    </footer>
+
     <script>
-        const toggleButton = document.getElementById("toggleBio");
-        const extraBio = document.getElementById("extraBio");
-
-        toggleButton.addEventListener("click", () => {
-            extraBio.classList.toggle("hidden");
-            toggleButton.textContent = extraBio.classList.contains("hidden") ? "Learn More" : "Show Less";
+        let lastScrollPosition = window.pageYOffset;
+        
+        window.addEventListener('scroll', function() {
+            const currentScrollPosition = window.pageYOffset;
+            const header = document.querySelector('header');
+            
+            if (currentScrollPosition < lastScrollPosition) {
+                header.style.top = '0';
+            } 
+            else {
+                header.style.top = '-60px';
+            }
+            
+            lastScrollPosition = currentScrollPosition;
         });
     </script>
-    <hr>
-
-
 </body>
 </html>
