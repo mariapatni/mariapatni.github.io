@@ -23,6 +23,23 @@
             margin: 0;
             padding: 0 2rem;
             margin-left: 2rem;
+            text-align: left; /* Center align text to prevent University of Michigan Ann Arbor from splitting */
+        }
+
+        .profile-image {
+            width: 300px; /* Increased size for better visibility */
+            height: 300px; /* Increased size for better visibility */
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .student-type {
+            font-size: 1rem; /* Added font size for clarity */
+            margin: 1rem 0; /* Added margin for spacing */
+        }
+
+        .cv-link {
+            margin-top: 1rem; /* Added margin for spacing */
         }
 
         .profile-section {
@@ -169,21 +186,25 @@
     <div class="container">
         <div id="home" class="profile-section">
             <div class="profile-sidebar">
-                <img src="images/headshot.jpg" alt="Profile photo" class="profile-image">
+                <div class="profile-image-container">
+                    <img src="images/headshot.png" alt="Profile photo" class="profile-image">
+                </div>
                 <h1>Maria Patni</h1>
                 <p>Robotics Software Engineer</p>
                 
-                <ul class="contact-links">
-                    <li><a href="https://robotics.umich.edu/"><i class="fas fa-map-marker"></i> University of Michigan - Ann Arbor</a></li>
-                    <li><a href="mailto:mpatni@umich.edu"><i class="fas fa-envelope"></i> mpatni@umich.edu</a></li>
-                    <li><a href="https://github.com/mariapatni"><i class="fab fa-github"></i> GitHub</a></li>
-                    <li><a href="https://www.linkedin.in/mariapatni"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <ul class="contact-links" style="padding: 0; margin: 0; list-style: none;">
+                    <li style="margin-bottom: 1rem;"><a href="https://robotics.umich.edu/"><i class="fas fa-map-marker"></i> University of Michigan</a></li>
+                    <li style="margin-bottom: 1rem;"><a href="mailto:mpatni@umich.edu"><i class="fas fa-envelope"></i> mpatni@umich.edu</a></li>
+                    <li style="margin-bottom: 1rem;"><a href="https://github.com/mariapatni"><i class="fab fa-github"></i> GitHub</a></li>
+                    <li style="margin-bottom: 1rem;"><a href="https://www.linkedin.in/mariapatni"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li style="margin-bottom: 1rem;"><a href="files/resume.pdf" class="cv-link"><i class="fas fa-file"></i> View CV</a></li>
                 </ul>
             </div>
 
             <div class="profile-content">
                 <h2>Background</h2>
-                <p>I am a Computer Science student at the University of Michigan, focusing on robotics and autonomous systems. I currently work in the <a href="https://mmintlab.com">Michigan Model-based Manipulation and Interaction Lab</a>, where I research robotic manipulation and control. My broader research interests span robotic perception, control systems, and machine learning applications in robotics.</p>
+                <p>I am an Undergraduate Computer Science student at the University of Michigan, focusing on robotics and autonomous systems. I currently work in the <a href="https://mmintlab.com">Manipulation and Machine Intelligence (MMINT) Lab</a>, where I research robotic manipulation and control. My broader research interests span robotic perception, control systems, and machine learning applications in robotics.</p>
+
 
                 <h2>Research Interests</h2>
                 <p>I am particularly interested in the intersection of robotics and machine learning, focusing on:</p>
