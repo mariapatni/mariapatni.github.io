@@ -84,6 +84,8 @@ nav a:hover {
     .container {
         padding: 1rem;
         margin: 0;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .header-container {
@@ -100,6 +102,14 @@ nav a:hover {
     .experience-item {
         padding: 1rem;
         margin: 1rem 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .profile-content {
+        width: 100%;
+        padding: 0 0.5rem;
+        box-sizing: border-box;
     }
 
     body {
@@ -129,6 +139,15 @@ nav a:hover {
     nav a {
         padding: 0.2rem 0.8rem;
         font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 1rem 0.5rem;
+    }
+
+    .experience-item {
+        margin: 1rem -0.5rem;
+        width: calc(100% + 1rem);
     }
 }
 
