@@ -187,6 +187,68 @@ footer {
     box-sizing: border-box;
 }
 
+.design-work {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: rgba(12, 41, 30, 0.03);
+    border-radius: 8px;
+}
+
+.design-work h2 {
+    color: #0c291e;
+    margin-bottom: 1rem;
+}
+
+.design-work a {
+    color: #0c291e;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.design-work a:hover {
+    text-decoration: underline;
+}
+
+.portfolio-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.experience-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.experience-content {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.company-logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    margin-top: 0;
+}
+
+.experience-content {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+}
+
+.company-logo {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-top: 0.3rem; /* Align with first line of text */
+}
+
 
 
 
