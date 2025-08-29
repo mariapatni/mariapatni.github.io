@@ -273,6 +273,8 @@
             <nav>
                 <a href="#home">Home</a>
                 <a href="#experience">Experience</a>
+                <a href="#research-portfolio">Research</a>
+                <a href="#design-portfolio">Design</a>
             </nav>
         </div>
     </header>
@@ -281,7 +283,7 @@
         <div id="home" class="profile-section">
             <div class="profile-sidebar">
                 <div class="profile-image-container">
-                    <img src="images/headshot.png" alt="Profile photo" class="profile-image">
+                    <img src="./images/headshot.png" alt="Profile photo" class="profile-image">
                 </div>
                 <h1>Maria Patni</h1>
                 <p>Robotics Software Engineer</p>
@@ -312,9 +314,9 @@
 
 
                 <div class="experience-item">   
-                    <h3>MMINT Lab (January 2025 - Present)</h3>
+                    <h3>MMINT Lab (September 2024 - Present)</h3>
                     <div class="experience-content">
-                        <img src="images/logos/mmint.png" alt="MMINT Logo" style="float: left; width: 125px; height: auto; margin-right: 20px; margin-bottom: 20px;">
+                        <img src="./images/logos/mmint.png" alt="MMINT Logo" style="float: left; width: 125px; height: auto; margin-right: 20px; margin-bottom: 20px;">
                         <p>Currently building a contrastive model to efficiently learn visiotactile representations of rigid and deformable objects.</p>
                     </div>
                 </div>
@@ -322,26 +324,26 @@
                 <div class="experience-item">   
                     <h3>Viam (May 2024 - August 2024)</h3>
                     <div class="experience-content">
-                        <img src="images/logos/viam.jpeg" alt="Viam Logo" style="float: left; width: 125px; height: auto; margin-right: 20px;">
+                        <img src="./images/logos/viam.jpeg" alt="Viam Logo" style="float: left; width: 125px; height: auto; margin-right: 20px;">
                         <p>I expanded hardware support for processors. My main project was developing a custom pin control library for the RaspberryPi5, supporting features like PWM, GPIO, and pull up/down resistors. I also integrated MIMO capabilities into Viam's control systems package to enhance PID controller performance.</p>
                     </div>
                 </div>
 
                 <div class="experience-item">
                     <h3>EverestLabs (May 2023 - August 2023)</h3>
-                    <img src="images/logos/everestlabs.jpeg" alt="EverestLabs Logo" style="float: left; width: 125px; height: auto; margin-right: 20px;">
+                    <img src="./images/logos/everestlabs.jpeg" alt="EverestLabs Logo" style="float: left; width: 125px; height: auto; margin-right: 20px;">
                     <p>I improved pick point accuracy for a FANUC robot arm in the context of waste management/sorting. I prototyped six different algorithms for determining optimal contact surfaces and built infrastructure for object height data collection and depth map generation through preliminary testing.</p>
                 </div>
 
                 <div class="experience-item">
                     <h3>Zipline (May 2022 - August 2022)</h3>
-                    <img src="images/logos/zipline.jpeg" alt="Zipline Logo" style="float: left; width: 125px; height: auto; margin-right: 20px;">
+                    <img src="./images/logos/zipline.jpeg" alt="Zipline Logo" style="float: left; width: 125px; height: auto; margin-right: 20px;">
                     <p>I worked on drone serviceability solutions and site integration. I designed and built prototypes for various drone serviceability concepts and ground support equipment. My work led to being listed as an inventor on two patents filed in 2023.</p>
                 </div>
 
                 <div class="experience-item">
                     <h3>Georgia Tech Biorobotics and Human Modeling Lab (September 2021 - May 2022)</h3>
-                    <img src="images/logos/gt.jpeg" alt="BRHL Logo" style="float: left; width: auto; height: 125px; margin-right: 20px; margin-bottom: 100px;">
+                    <img src="./images/logos/gt.jpeg" alt="BRHL Logo" style="float: left; width: auto; height: 125px; margin-right: 20px; margin-bottom: 100px;">
                     <p>As an undergraduate researcher at <a href="https://www.biorobotics.gatech.edu/wp/">BRHML</a>, I worked on two major projects:</p>
                     <ul>
                         <li>A vascular access cannulation device, collaborating with Emory School of Medicine to improve vein visibility during IV insertion for hypovolemic patients</li>
@@ -351,25 +353,18 @@
 
                 <div class="experience-item">
                     <h3>Zipline (June 2021 - August 2021)</h3>
-                    <img src="images/logos/zipline.jpeg" alt="Zipline Logo" style="float: left; width: 125px; height: auto; margin-right: 20px;">
-                    <p>I focused on improving delivery accuracy for drone operations. I created standardized testing procedures for mass testing and package behavior analysis, investigated outlier delivery cases, and identified/implemented mechanicaldesign changes that improved drop accuracy by 30%.</p>
+                    <img src="./images/logos/zipline.jpeg" alt="Zipline Logo" style="float: left; width: 125px; height: auto; margin-right: 20px;">
+                    <p>I focused on improving delivery accuracy for drone operations. I created standardized testing procedures for mass testing and package behavior analysis, investigated outlier delivery cases, and identified/implemented mechanical design changes that improved drop accuracy by 30%.</p>
                 </div>
 
-                <h2>Patents</h2>
-                <p>Issued by Zipline International Inc., June 2023:</p>
-                <ul>
-                    <li>Patent Assignment P308479.US.03 - "DOCKING CONFIGURATIONS FOR AERIAL VEHICLES"</li>
-                    <li>Patent Assignment P308479.US.04 - "DOCKING CONFIGURATIONS FOR AERIAL VEHICLES"</li>
-                </ul>
-
-                <div class="research-work">
+                <div class="research-work" id="research-portfolio">
                     <h2>Research Work</h2>
-                    <p>I'm currently working on a contrastive model to efficiently learn visiotactile representations of rigid and deformable objects. Basically what that means is I'm trying to have a model learn the relationship between touch and feel for objects, soft and hard. The ultimate goal is to have a model that knows what an object feels like before a it gets to touch it based on what it's seen/felt before. </p>
+                    <p>I'm currently working on a contrastive model to efficiently learn visiotactile representations of rigid and deformable objects. Basically what that means is I'm trying to have a model learn the relationship between touch and feel for objects, soft and hard. <br><br> The ultimate goal is to have a model that knows what an object feels like before it gets to touch it based on what it's seen/felt before. </p>
                     <p>I built a gripper (loosely based on the <a href="https://umi-gripper.github.io/"> UMI Gripper</a>) that uses DIGIT Sensors & Realsense Cameras to record tactile and vision data as I grasp different objects. I feed this data to a model that will learn these assosciations (hopefully soon, it's a work in progress!). Here's some pictures of the gripper in action collecting data on a lego duplo block: </p>
                     
-                    <img src="images/portfolio/2025-mmint/img1.jpg" alt="Gripper" style="width: 225px; height: 225px; object-fit: cover;">
-                    <img src="images/portfolio/2025-mmint/img2.jpg" alt="Gripper IRL" style="width: 225px; height: 225px; object-fit: cover;">
-                    <img src="images/portfolio/2025-mmint/img3.jpg" alt="Data Collection" style="width: 225px; height: 225px; object-fit: cover; object-position: left;">
+                    <img src="./images/portfolio/2025-mmint/img1.jpg" alt="Gripper" style="width: 225px; height: 225px; object-fit: cover;">
+                    <img src="./images/portfolio/2025-mmint/img2.jpg" alt="Gripper IRL" style="width: 225px; height: 225px; object-fit: cover;">
+                    <img src="./images/portfolio/2025-mmint/img3.jpg" alt="Data Collection" style="width: 225px; height: 225px; object-fit: cover; object-position: left;">
                     
                     <p>Below are my work in progress slides for my research work. They're sloppy right now as I'm in the midst of it, but one I'm done with the project I'll have a refined github page / writeup. </p>
                     <p> Check out my slides
@@ -379,72 +374,84 @@
                         <a href="https://github.com/mariapatni/mmint-research"> here</a>   </p>
                 </div>
 
-                <div class="design-work">
-                    <h2>Internship Design Work</h2>
+                <h2 id="design-portfolio">Design Portfolio</h2>
 
-                    <p> Below are some design projects from my MechE internships at Zipline.
+                <div class="design-work" id="design-portfolio">
+
                     <div class="portfolio-section">
-                        <h3>Zipline 2022</h3>           
-                        <img src="/images/portfolio/2022-Zipline/img1.jpeg" alt="2022 Project Image 1" style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2022-Zipline/img7.jpeg" alt="2022 Project Image 7" style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2022-Zipline/img8.jpeg" alt="2022 Project Image 8" style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2022-Zipline/img3.jpeg" alt="2022 Project Image 2" style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2022-Zipline/img2.jpeg" alt="2022 Project Image 3" style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2022-Zipline/img4.jpeg" alt="2022 Project Image 4" style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2022-Zipline/img6.jpeg" alt="2022 Project Image 6" style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2022-Zipline/img10.jpeg" alt="2022 Project Image 10" style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2022-Zipline/img11.jpeg" alt="2022 Project Image 11" style="width: 225px; height: 225px; object-fit: cover;">
+                        <h3>Zipline 2022</h3>  
+                        <p>These are some pictures from my 2022 internship, where I designed initial prototypes for site shipper integration and serviceability solutions for Zipline's P2. At small and medium scale, I designed potential solutions for lowering charging docks and drones down to ground level when broken and later moving them to a servicing van.</p>
+         
+                        <img src="./images/portfolio/2022-Zipline/img1.jpeg" alt="2022 Project Image 1" style="width: 225px; height: 225px; object-fit: cover; object-position: top;">
+                        <img src="./images/portfolio/2022-Zipline/img7.jpeg" alt="2022 Project Image 7" style="width: 225px; height: 225px; object-fit: cover;">
+                        <img src="./images/portfolio/2022-Zipline/img8.jpeg" alt="2022 Project Image 8" style="width: 225px; height: 225px; object-fit: cover;">
+                        <img src="./images/portfolio/2022-Zipline/img3.jpeg" alt="2022 Project Image 2" style="width: 225px; height: 225px; object-fit: cover; object-position: bottom;">
+                        <img src="./images/portfolio/2022-Zipline/img2.jpeg" alt="2022 Project Image 3" style="width: 225px; height: 225px; object-fit: cover; object-position: right;">
+                        <img src="./images/portfolio/2022-Zipline/img4.jpeg" alt="2022 Project Image 4" style="width: 225px; height: 225px; object-fit: cover;">
+                        <img src="./images/portfolio/2022-Zipline/img6.jpeg" alt="2022 Project Image 6" style="width: 225px; height: 225px; object-fit: cover;">
+                        <img src="./images/portfolio/2022-Zipline/img10.jpeg" alt="2022 Project Image 10" style="width: 225px; height: 225px; object-fit: cover;">
+                        <img src="./images/portfolio/2022-Zipline/img11.jpeg" alt="2022 Project Image 11" style="width: 225px; height: 225px; object-fit: cover;">
         
-                        <p>These are some pictures from my 2022 internship, where I designed initial prototypes for site shipper integration and serviceability solutions for Zipline's P2. At small and medium scale, I designed potential solutions for lowering charging docks and drones down to ground level when broken and later moving them to a servicing van. Once I find my internship slides (lost in the abyss), I'll add them here.</p>
+                        <p> Once I find my internship slides (lost in the cloud abyss), I'll add them here. </p>
                     </div>
 
                     <div class="portfolio-section">
-                        <h3>Zipline 2021</h3>           
-                        <img src="/images/portfolio/2021-Zipline/img1.JPG" alt="Launching a new parachute design from 80 ft up." style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2021-Zipline/img2.JPG" alt="Zips deploying a new package design" style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2021-Zipline/img3.JPG" alt="Testing zip/package dynamics at deployment using the monorail tester" style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2021-Zipline/img4.JPG" alt="2021 Project Image 3" style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2021-Zipline/img5.JPG" alt="2021 Project Image 4" style="width: 225px; height: 225px; object-fit: cover;">
-                        <img src="/images/portfolio/2021-Zipline/img6.JPG" alt="2021 Project Image 5" style="width: 225px; height: 225px; object-fit: cover;">
+                        <h3>Zipline 2021</h3>  
                         <p>These are some random pictures of my package & parachute designs & tests from my 2021 internship, where I worked on Delivery Accuracy. There's a picture of me dropping parachute designs from 80 ft up in the air, and pictures of our monorail tester designed to simulate package / zip dynamics at package deployment.</p>
+         
+                        <img src="./images/portfolio/2021-Zipline/img1.JPG" alt="Launching a new parachute design from 80 ft up." style="width: 225px; height: 225px; object-fit: cover; object-position: top;">
+                        <img src="./images/portfolio/2021-Zipline/img2.JPG" alt="Zips deploying a new package design" style="width: 225px; height: 225px; object-fit: cover; object-position: left;">
+                        <img src="./images/portfolio/2021-Zipline/img3.JPG" alt="Testing zip/package dynamics at deployment using the monorail tester" style="width: 225px; height: 225px; object-fit: cover;">
+                        <img src="./images/portfolio/2021-Zipline/img4.JPG" alt="2021 Project Image 3" style="width: 225px; height: 225px; object-fit: cover;">
+                        <img src="./images/portfolio/2021-Zipline/img5.JPG" alt="2021 Project Image 4" style="width: 225px; height: 225px; object-fit: cover;">
+                        <img src="./images/portfolio/2021-Zipline/img6.JPG" alt="2021 Project Image 5" style="width: 225px; height: 225px; object-fit: cover;">
                         <p> Check out my internship slides: <a href="https://docs.google.com/presentation/d/1Z5aFQwwZAG-OafvodlUwiQI8yGOC8ljtP9hDQ5aBbbI/edit?usp=sharing">Zipline 2021</a></p>
                     </div>
 
-                    <h2>FRC Design Work</h2>
+                    <br>
+
+                    <h3>FRC Design Work</h3>
                     <p> Below are my design projects from my high school FRC team <a href="https://www.team3061.org/">(Huskie Robotics, Team 3061)</a>. I worked my way up to lead designer and eventually captain.</p>
                     
                     <div class="portfolio-section">
                         <h3>Huskie Robotics 2021</h3>           
-                        <img src="/images/portfolio/2021/img1.JPG" alt="2021 Project Image 1" style="width: 225px; height: 225px;">
-                        <img src="/images/portfolio/2021/img2.JPG" alt="2021 Project Image 2" style="width: 225px; height: 225px;">
+                        <img src="./images/portfolio/2021/img1.JPG" alt="2021 Project Image 1" style="width: 225px; height: 225px;">
+                        <img src="./images/portfolio/2021/img2.JPG" alt="2021 Project Image 2" style="width: 225px; height: 225px;">
                         <p>Since FRC 2021 was essentially cancelled due to COVID, I worked on a few smaller projects. First is a custom gearbox 60% smaller than an OTS gearbox, allowing our team more space within the center of robot for electronics / mechanisms. Second is a drivetrain with custom dual-speed gearboxes. It is a lighter, more efficient swerve drivetrain.</p>
                     </div>
 
                     <div class="portfolio-section">
                         <h3>Huskie Robotics 2020</h3>           
-                        <img src="/images/portfolio/2020/img1.jpg" alt="2020 Project Image 1" style="width: 225px; height: 225px;">
-                        <img src="/images/portfolio/2020/img2.jpg" alt="2020 Project Image 2" style="width: 225px; height: 225px;">
-                        <img src="/images/portfolio/2020/img3.JPG" alt="2020 Project Image 3" style="width: 225px; height: 225px;">
-                        <img src="/images/portfolio/2020/img4.JPG" alt="2020 Project Image 3" style="width: 225px; height: 225px;">
+                        <img src="./images/portfolio/2020/img1.jpg" alt="2020 Project Image 1" style="width: 225px; height: 225px;">
+                        <img src="./images/portfolio/2020/img2.jpg" alt="2020 Project Image 2" style="width: 225px; height: 225px;">
+                        <img src="./images/portfolio/2020/img3.JPG" alt="2020 Project Image 3" style="width: 225px; height: 225px;">
+                        <img src="./images/portfolio/2020/img4.JPG" alt="2020 Project Image 3" style="width: 225px; height: 225px;">
                         <p>Designed for the FRC 2020 Game: Infinite Recharge. There's a tank style 6 wheel drivetrain base and a climber mechanism designed to latch onto a swinging triangular beam structure. To manipulate the primary scoring component (a dodgeball), there is an intake -> conveyor -> flywheel shooter system to collect, store, and launch them. I designed everything except the climber.</p>
                     </div>
 
                     <div class="portfolio-section">
                         <h3>Huskie Robotics 2019</h3>
-                        <img src="/images/portfolio/2019/img1.JPG" alt="2019 Project Image 1" style="width: 225px; height: 225px;">
-                        <img src="/images/portfolio/2019/img2.jpg" alt="2019 Project Image 2" style="width: 225px; height: 225px;">
-                        <img src="/images/portfolio/2019/img3.jpg" alt="2019 Project Image 3" style="width: 225px; height: 225px;">
+                        <img src="./images/portfolio/2019/img1.JPG" alt="2019 Project Image 1" style="width: 225px; height: 225px;">
+                        <img src="./images/portfolio/2019/img2.jpg" alt="2019 Project Image 2" style="width: 225px; height: 225px;">
+                        <img src="./images/portfolio/2019/img3.jpg" alt="2019 Project Image 3" style="width: 225px; height: 225px;">
                         <p>Designed for the FRC 2019 Game: Destination: Deep Space. I designed the entire tank style 6 wheel drivetrain, electrical board layout, and primary scoring component.</p>
                     </div>
 
                     <div class="portfolio-section">
                         <h3>Huskie Robotics 2018</h3>
-                        <img src="/images/portfolio/2018/img1.jpg" alt="2018 Project Image 1" style="width: 225px; height: 225px;">
-                        <img src="/images/portfolio/2018/img2.jpg" alt="2018 Project Image 2" style="width: 225px; height: 225px;">
-                        <img src="/images/portfolio/2018/img3.jpg" alt="2018 Project Image 3" style="width: 225px; height: 225px;">
+                        <img src="./images/portfolio/2018/img1.jpg" alt="2018 Project Image 1" style="width: 225px; height: 225px;">
+                        <img src="./images/portfolio/2018/img2.jpg" alt="2018 Project Image 2" style="width: 225px; height: 225px;">
+                        <img src="./images/portfolio/2018/img3.jpg" alt="2018 Project Image 3" style="width: 225px; height: 225px;">
                         <p>Designed for the FRC 2018 Power Up Competition. I was responsible for designing the electrical board layout, climber mechanism (winch based), and a small portion of the drive train.</p>
                     </div>
                 </div>
+
+                <h2>Patents</h2>
+                <p>Issued by Zipline International Inc., June 2023:</p>
+                <ul>
+                    <li>Patent Assignment P308479.US.03 - "DOCKING CONFIGURATIONS FOR AERIAL VEHICLES"</li>
+                    <li>Patent Assignment P308479.US.04 - "DOCKING CONFIGURATIONS FOR AERIAL VEHICLES"</li>
+                </ul>
             </div>
         </div>
     </div>
