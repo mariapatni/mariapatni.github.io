@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience — Maria Patni</title>
+  <meta name="description" content="Experience of Maria Patni — robotics engineer." />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f2e9;
+      --fg: #1b4332;
+      --muted: #406a5b;
+      --rule: #d6d0c4;
+      --link: #0f5132;
+      --maxw: 880px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Fira Code', monospace;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+    }
+    a { color: var(--link); text-decoration: underline; }
+    header {
+      border-bottom: 1px solid var(--rule);
+      padding: 10px 20px;
+      display: flex;
+      gap: 24px;
+      font-size: 16px;
+    }
+    header a { color: var(--fg); text-decoration: none; }
+    header a:hover { text-decoration: underline; }
+
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
+
+    .page-title { font-size: 2rem; margin: 10px 0 4px; }
+    .subtitle { color: var(--muted); margin: 0 0 20px; }
+
+    .xp-list { display: grid; gap: 20px; margin-top: 10px; }
+    .xp-item {
+      display: grid;
+      grid-template-columns: 68px 1fr;
+      gap: 16px;
+      padding: 16px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .xp-item:first-child { border-top: none; }
+
+    .logo {
+      width: 56px; height: 56px; object-fit: contain;
+      filter: none;
+      opacity: 0.9;
+    }
+
+    /* --- Headline rules: Company + Role inline; Dates/Location below --- */
+    .xp-head { margin-bottom: 6px; }
+    .xp-title { margin: 0; }
+    .xp-title .company, .xp-title .role { display: inline; }
+    .xp-title .company { font-weight: 700; }
+    .xp-title .role { color: var(--muted); font-size: 1rem; margin-left: .5ch; }
+    .xp-title .company + .role::before { content: " — "; }
+
+    .dates { display: block; color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+    .location { display: block; color: var(--muted); font-size: 0.9rem; }
+
+    .xp-body { margin-top: 6px; }
+    .xp-body ul { margin: 6px 0 0 18px; }
+
+    @media (max-width: 700px) {
+      .xp-item { grid-template-columns: 1fr; }
+      .logo { width: 48px; height: 48px; }
+    }
+
+    footer {
+      display: flex; justify-content: space-around;
+      border-top: 1px solid var(--rule);
+      margin-top: 40px; padding: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">Home</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html">Projects</a>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Experience</h1>
+    <p class="subtitle">professional stuff I've done</p>
+
+    <section class="xp-list">
+      <article class="xp-item">
+        <img class="logo" src="images/logos/mmint.png" alt="MMINT Lab logo" />
+        <div>
+          <div class="xp-head">
+            <h3 class="xp-title"><span class="company">Manipulation and Machine Intelligence Lab</span><span class="role">Undergrad Researcher</span></h3>
+            <span class="dates">Sept. 2024 - Present</span>
+            <span class="location">Ann Arbor, MI</span>
+          </div>
+          <div class="xp-body">
+            <ul>
+              <li>Designed hardware & software for visio-tactile data collection pipelines; used DIGIT sensors & Intel RealSense D435/D405 depth cameras.</li>
+              <li>Created tooling for using NERF-based object models & FoundationPose to generate synthetic visual data for tactile signatures. </li>
+              <li>Building a contrastive model to learn visio-tactile representations of rigid and deformable objects.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="xp-item">
+        <img class="logo" src="images/logos/viam.jpeg" alt="Viam logo" />
+        <div>
+          <div class="xp-head">
+            <h3 class="xp-title"><span class="company">Viam</span><span class="role">Embedded Software</span></h3>
+            <span class="dates">Summer 2024</span>
+            <span class="location">New York, NY</span>
+          </div>
+          <div class="xp-body">
+            <ul>
+              <li>Investigated & debugged failure modes for Viam's software module on the RasPi5 </li>
+              <li>Developed a custom RasPi5 pin control library supporting PWM, GPIO, and pull up/down resistors.</li>              
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="xp-item">
+        <img class="logo" src="images/logos/everestlabs.jpeg" alt="EverestLabs logo" />
+        <div>
+          <div class="xp-head">
+            <h3 class="xp-title"><span class="company">EverestLabs</span><span class="role">Robotics Software</span></h3>
+            <span class="dates">Summer 2023</span>
+            <span class="location">Fremont, CA</span>
+            </div>
+            <div class="xp-body">
+              <ul>
+                <li>Improved pick point accuracy for a 6DOF FANUC robot arm sorting trash / recyclables.</li>
+                <li>Built infrastructure for object height data collection and depth map generation.</li>
+                <li>Prototyped 6 different algorithms for determining optimal contact surfaces, using RANSAC, Segmentation, and other CV techniques.</li>
+              </ul>
+            </div>
+          </div>
+      </article>
+
+      <article class="xp-item">
+        <img class="logo" src="images/logos/zipline.jpeg" alt="Zipline logo" />
+        <div>
+          <div class="xp-head">
+            <h3 class="xp-title"><span class="company">Zipline</span><span class="role">Mechanical Design</span></h3>
+            <span class="dates">Summer 2022</span>
+            <span class="location">San Francisco, CA</span>
+            </div>
+            <div class="xp-body">
+              <ul>
+                <li>Decided how site integration would be handled for Zipline's newest drone delivery platform, P2.</li>
+                <li>Designed initial prototypes for various drone serviceability concepts and ground support equipment.</li>
+                <li>Listed as an inventor on patent (D1091457). Filed in 2023, published in 2025. </li>
+            </div>
+          </div>
+      </article>
+
+      <article class="xp-item">
+        <img class="logo" src="images/logos/zipline.jpeg" alt="Zipline logo" />
+        <div>
+          <div class="xp-head">
+            <h3 class="xp-title"><span class="company">Zipline</span><span class="role">Mechanical Design</span></h3>
+            <span class="dates">Summer 2021</span>
+            <span class="location">San Francisco, CA</span>
+            </div>
+            <div class="xp-body">
+              <ul>
+                <li>Improved delivery accuracy for Zipline's first drone delivery platform, P1 by 30%.</li>
+                <li>Created standardized testing procedures for mass testing and package behavior analysis.</li>
+                <li>Identified failure modes across package, parachute, and payload bay. Fixes were implemented in production 1 year later. </li>
+                
+            </div>
+          </div>
+      </article>
+
+
+    </section>
+
+    <footer>
+      <a href="https://x.com/mariafpatni">X</a>
+      <a href="https://linkedin.com/in/mariapatni">LinkedIn</a>
+      <a href="https://github.com/mariapatni">GitHub</a>
+      <a href="mailto:mpatni@umich.edu">Email</a>
+    </footer>
+  </main>
+</body>
+</html>
