@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div style="height:1px; background:#d6d0c4; margin:10px 14px;"></div>
 
-        <a class="menu-link" href="./files/resume.pdf" style="display:block; padding:10px 14px; text-decoration:underline; color:#0f5132;">CV</a>
+        <a class="menu-link" href="./files/resume.pdf" target="_blank" style="display:block; padding:10px 14px; text-decoration:underline; color:#0f5132;">CV</a>
       </nav>
 
       <!-- Close area at bottom -->

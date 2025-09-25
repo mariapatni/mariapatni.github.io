@@ -4,12 +4,6 @@
 <!-- Hamburger Menu (loaded by menu.js) -->
 <script src="menu.js"></script>
 
-<!-- Top Navigation Bar -->
-<nav class="top-nav">
-  <a href="index.html" class="active">Home</a>
-  <a href="experience.html">Experience</a>
-  <a href="projects.html">Projects</a>
-</nav>
 
 <head>
   <meta charset="utf-8" />
@@ -39,8 +33,8 @@
 
     .top-nav { 
       position: absolute; 
-      top: 14px; 
-      right: 20px; 
+      top: 0; 
+      right: 0; 
       z-index: 1000; 
       display: flex; 
       gap: 24px; 
@@ -50,6 +44,7 @@
       padding: 8px 16px;
       border-radius: 8px;
       border: 1px solid #d6d0c4;
+      align-items: center;
     }
     .top-nav a { color: #1b4332; text-decoration: none; font-weight: 500; }
     .top-nav a:hover { text-decoration: underline; }
@@ -62,7 +57,14 @@
     }
     .subtitle { font-size: 1.2rem; margin: 0 0 10px; }
     .location { text-align: right; }
-    .hero img { width: 40%; height: auto; margin: 20px auto; display: block;}
+    .hero img { width: 40%; height: auto; margin: 10px auto; display: block; border-radius: 12px;}
+    .image-caption { 
+      text-align: center; 
+      font-size: 0.5rem; 
+      color: #1b4332; 
+      margin: 4px 0 0 0; 
+      font-style: italic;
+    }
     .intro { font-size: 1rem; }
     footer {
       display: flex;
@@ -80,7 +82,7 @@
     <a href="projects.html">Projects</a>
   </header> -->
   <div class="container">
-    <section class="masthead">
+    <section class="masthead" style="position: relative;">
       <div style="display:flex; justify-content:space-between; align-items:end;">
         <div>
           <h1 class="name">Maria Patni</h1>
@@ -88,10 +90,17 @@
         </div>
         <div class="location">San Francisco , CA</div>
       </div>
+      <!-- Top Navigation Bar -->
+      <nav class="top-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html">Projects</a>
+      </nav>
     </section>
 
     <div class="hero">
-      <img src="images/home.JPG" alt="Maria Patni" />
+      <img src="images/home.jpeg" alt="Maria Patni" />
+      <p class="image-caption">(yes, that's me up there)</p>
     </div>
 
     <p class="intro">
@@ -103,10 +112,10 @@
     </p>
 
     <footer>
-      <a href="https://x.com/mariafpatni">X</a>
-      <a href="https://linkedin.com/in/mariapatni">LinkedIn</a>
-      <a href="https://github.com/mariapatni">GitHub</a>
-      <a href="mailto:mpatni@umich.edu">Email</a>
+      <a href="https://x.com/mariafpatni" target="_blank">X</a>
+      <a href="https://linkedin.com/in/mariapatni" target="_blank">LinkedIn</a>
+      <a href="https://github.com/mariapatni" target="_blank">GitHub</a>
+      <a href="mailto:mpatni@umich.edu" target="_blank">Email</a>
       
       
     </footer>
