@@ -52,6 +52,8 @@
     .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .card { grid-column: auto; background: #fff8; border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; transition: transform .15s ease, box-shadow .15s ease; }
     .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .card-link { text-decoration: none; color: inherit; display: block; }
+    .card-link:hover { text-decoration: none; }
     .thumb { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: #eae6dc; }
 
     .card-body { padding: 14px 16px 16px; }
@@ -88,6 +90,20 @@
 
 
     <section class="grid">
+        <!-- Server Repair Blog Post -->
+        <a href="blogs/repairing-server/index.html" class="card-link">
+          <article class="card" id="server-repair">
+            <img class="thumb" src="blogs/repairing-server/images/success_gpu_burn_2.png" alt="Server repair project - GPU burn test success" />
+            <div class="card-body">
+              <h3 class="card-title">repairing a $130,000 server for fun</h3>
+              <p class="card-desc">A blog post about the adventure of fixing an expensive server.</p>
+              <div class="chips">
+                <span class="chip">Hardware</span><span class="chip">Electronics</span><span class="chip">Troubleshooting</span>
+              </div>
+            </div>
+          </article>
+        </a>
+      
         <!-- MMINT Research -->
         <article class="card" id="mmint">
           <img class="thumb" src="images/portfolio/2025-mmint/img3.jpg" alt="MMINT lab research overview" />
