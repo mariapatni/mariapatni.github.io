@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "repairing-server",
+    "title": "repairing a $130,000 server for fun",
+    "description": "all it took was toggling 3 settings. but how could I know which ones?",
+    "coverPath": "/blogs/repairing-server/images/success_gpu_burn_2_cover.png",
+    "tags": [
+      "Firmware",
+      "GPUs",
+      "BIOS",
+      "Hardware",
+      "Electronics",
+      "Troubleshooting"
+    ],
+    "url": "/blogs/repairing-server/",
+    "date": "2025-11-25"
+  },
+  {
+    "slug": "curious_TARFS",
+    "title": "Curious TARFS",
+    "description": "Learning relationships between sight and feel for objects, soft and hard.",
+    "coverPath": "/blogs/curious_TARFS/images/cover.jpg",
+    "tags": [
+      "3D Reconstruction",
+      "DIGIT",
+      "RealSense",
+      "NERFstudio",
+      "FoundationPose",
+      "UMI Gripper"
+    ],
+    "url": null,
+    "date": "2025-09-19"
+  },
+  {
+    "slug": "frc_2020",
+    "title": "FRC 2020",
+    "description": "Designed drivetrain, storage, & intake mechanisms. <br><br> Years later, I did a deep dive on our design, analyzing structural integrity, flaws, etc. Click the tile to see!",
+    "coverPath": "/blogs/frc_2020/images/cover.JPG",
+    "tags": [
+      "FRC",
+      "CAD",
+      "Prototyping"
+    ],
+    "url": "https://docs.google.com/presentation/d/1AouteYFL6P9DMjL1s9PPVObFGOxiIq_GG-q0FF4FC84/edit",
+    "date": "2020-09-01"
+  },
+  {
+    "slug": "frc_2019",
+    "title": "FRC 2019",
+    "description": "Designed drivetrain, scoring mechanism, and platform climber.",
+    "coverPath": "/blogs/frc_2019/images/cover.jpg",
+    "tags": [
+      "FRC",
+      "CAD",
+      "Prototyping"
+    ],
+    "url": null,
+    "date": "2019-09-01"
+  },
+  {
+    "slug": "frc_2018",
+    "title": "FRC 2018",
+    "description": "Designed climber \"hook\" for winch-based system.",
+    "coverPath": "/blogs/frc_2018/images/cover.jpg",
+    "tags": [
+      "FRC",
+      "CAD",
+      "Prototyping"
+    ],
+    "url": null,
+    "date": "2018-09-01"
+  },
+  {
+    "slug": "frc_misc",
+    "title": "Misc FRC Design Work",
+    "description": "Custom Gearbox for dual-speed tank-style drivetrain + swerve-style drivetrain",
+    "coverPath": "/blogs/frc_misc/images/img1.JPG",
+    "tags": [
+      "FRC",
+      "CAD",
+      "Prototyping"
+    ],
+    "url": null,
+    "date": "2018-08-01"
+  }
+]
