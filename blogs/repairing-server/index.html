@@ -6,6 +6,7 @@
   <title>Repairing a $130,000 Server for Fun — Maria Patni</title>
   <meta name="description" content="Blog post about repairing a $130,000 server for fun by Maria Patni." />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" data-route="/styles.css">
   <style>
     :root {
       --bg: #f6f2e9;       /* light beige */
@@ -416,17 +417,11 @@
   </style>
 </head>
 <body>
-  <script src="../../menu.js"></script>
-
   <div class="container">
 
     <!-- Top Navigation Bar -->
     <section class="masthead" style="position: relative;">
-      <nav class="top-nav">
-        <a href="../../index.html">Home</a>
-        <a href="../../experience.html">Experience</a>
-        <a href="../../projects.html" class="active">Projects</a>
-      </nav>
+      <div data-layout="nav"></div>
     </section>
 
     <h1 class="page-title">Repairing a $130,000 server</h1>
@@ -494,7 +489,7 @@
 
       <div class="image-row gpu-burn">
         <img src="images/success_gpu_burn.png" alt="Successful GPU burn test with all 8 GPUs" />
-        <img src="images/success_gpu_burn_2.png" alt="Successful GPU burn test with all 8 GPUs" />
+        <img src="images/success_gpu_burn_2_cover.png" alt="Successful GPU burn test with all 8 GPUs" />
       </div>
 
       <p>I thought all was well after this.</p>
@@ -557,7 +552,6 @@
 
       <p>It's like calling someone who's asleep - if they don't pick up fast enough, you hang up and report a communication failure.</p>
 
-      <img src="images/iod-diagram.jpg" alt="Diagram showing IOD sleep issue" />
 
       <p>In addition, there was another setting called <strong>ASPM (Active State Power Management)</strong> that does the same thing for the PCIe connections themselves - the transmitters and receivers that send data between the GPU and CPU can also "sleep" when idle. Same problem: if one side is trying to communicate and the other is asleep, parity error.</p>
 
@@ -566,7 +560,6 @@
         <p>Disabling these 2 power-saving settings resolved all parity errors. The system has been running stable for a week now.</p>
       </div>
 
-      <img src="images/bios-settings-disabled.jpg" alt="BIOS settings with power management disabled" />
 
       <hr />
       <hr />
@@ -869,13 +862,9 @@
       <p><strong>The system has been running stable for 1 week now, handling full GPU workloads without any crashes or errors. Hopefully this saves someone else the weeks of troubleshooting I went through!</strong></p>
     </div>
 
-    <footer>
-      <a href="https://x.com/mariafpatni" target="_blank">X</a>
-      <a href="https://linkedin.com/in/mariapatni" target="_blank">LinkedIn</a>
-      <a href="https://github.com/mariapatni" target="_blank">GitHub</a>
-      <a href="mailto:mpatni@umich.edu" target="_blank">Email</a>
-    </footer>
+    <div data-layout="footer"></div>
   </div>
+  <script src="../../menu.js"></script>
 </body>
 </html>
 
