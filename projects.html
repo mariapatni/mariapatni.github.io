@@ -105,7 +105,8 @@
             const link = document.createElement('a');
             link.className = 'project-card-link';
             link.href = project.url;
-            link.setAttribute('target', '_self');
+            const isExternal = project.url.startsWith('http');
+            link.setAttribute('target', isExternal ? '_blank' : '_self');
             link.setAttribute('rel', 'noopener');
             link.appendChild(card);
             grid.appendChild(link);
