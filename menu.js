@@ -9,7 +9,6 @@ const FOOTER_HTML = `
     <a href="https://github.com/mariapatni" target="_blank">GitHub</a>
     <a href="https://linkedin.com/in/mariapatni" target="_blank">LinkedIn</a>
     <a href="mailto:mpatni@umich.edu" target="_blank">Email</a>
-    <span>© ${new Date().getFullYear()} Maria Patni</span>
   </footer>
 `;
 
