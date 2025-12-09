@@ -51,6 +51,13 @@ const PROJECT_METADATA = {
     tags: ['FRC', 'CAD', 'Prototyping'],
     date: '2018-08-01',
   },
+  'tree-trunk-detection': {
+    title: 'Tree Trunk Detection with RF-Detr',
+    description: 'RF detr just got released and I decided to mess around with it on a really small dataset!',
+    tags: ['RF-Detr', 'Perception'],
+    date: '2025-10-10',
+    url: 'https://docs.google.com/presentation/d/1CJHB8juFkBjVsIn-kvQgXJEzjINSOdCSwwqv0TcPPps/edit',
+  },
 };
 
 function ensureImagesFolder(blogDir) {
