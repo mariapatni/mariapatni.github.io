@@ -16,6 +16,18 @@
     "date": "2025-11-25"
   },
   {
+    "slug": "tree-trunk-detection",
+    "title": "Tree Trunk Detection with RF-Detr",
+    "description": "RF detr just got released and I decided to mess around with it on a really small dataset!",
+    "coverPath": "/blogs/tree-trunk-detection/images/cover.png",
+    "tags": [
+      "RF-Detr",
+      "Perception"
+    ],
+    "url": "https://docs.google.com/presentation/d/1CJHB8juFkBjVsIn-kvQgXJEzjINSOdCSwwqv0TcPPps/edit",
+    "date": "2025-10-10"
+  },
+  {
     "slug": "curious_TARFS",
     "title": "Curious TARFS",
     "description": "Learning relationships between sight and feel for objects, soft and hard.",
