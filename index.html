@@ -13,44 +13,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" data-route="/styles.css">
   <style>
-    body {
-      margin: 0;
-      font-family: "Fira Code", monospace;
-      background: #f6f2e9;   /* light beige background */
-      color: #1b4332;        /* dark earthy green text */
-      line-height: 1.6;
-    }
-    a { color: #0f5132; text-decoration: underline; }
-    .container { max-width: 800px; margin: 0 auto; padding: 20px 20px 20px 100px; }
     .name {
       font-size: 2.5rem;
       font-weight: 700;
       margin: 0;
     }
-    .subtitle { font-size: 1.2rem; margin: 0 0 10px; }
     .location { text-align: right; }
     .hero img { width: 40%; height: auto; margin: 10px auto; display: block; border-radius: 12px;}
-    .image-caption { 
-      text-align: center; 
-      font-size: 0.5rem; 
-      color: #1b4332; 
-      margin: 4px 0 0 0; 
+    .image-caption {
+      text-align: center;
+      font-size: 0.5rem;
+      color: #1b4332;
+      margin: 4px 0 0 0;
       font-style: italic;
     }
     .intro { font-size: 1rem; }
-    footer {
-      display: flex;
-      justify-content: space-around;
-      border-top: 1px solid #ccc;
-      margin-top: 40px;
-      padding: 20px 0;
+
+    @media (max-width: 720px) {
+      .hero img { width: 80%; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <section class="masthead" style="position: relative;">
-      <div style="display:flex; justify-content:space-between; align-items:end;">
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:end;">
         <div>
           <h1 class="name">Maria Patni</h1>
           <p class="subtitle">Robotics Engineer</p>

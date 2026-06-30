@@ -16,20 +16,6 @@
       --link: #0f5132;
       --maxw: 880px;
     }
-    /* * { box-sizing: border-box; } */
-    body {
-      margin: 0;
-      font-family: 'Fira Code', monospace;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.6;
-    }
-    a { color: var(--link); text-decoration: underline; }
-    .container { max-width: 800px; margin: 0 auto; padding: 20px 20px 20px 100px; }
-
-    .page-title { font-size: 2rem; margin: 10px 0 4px; }
-    .subtitle { color: var(--muted); margin: 0 0 20px; }
-
     .xp-list { display: grid; gap: 20px; margin-top: 10px; }
     .xp-item {
       display: grid;
@@ -60,15 +46,9 @@
     .xp-body { margin-top: 6px; }
     .xp-body ul { margin: 6px 0 0 18px; }
 
-    @media (max-width: 700px) {
+    @media (max-width: 720px) {
       .xp-item { grid-template-columns: 1fr; }
       .logo { width: 48px; height: 48px; }
-    }
-
-    footer {
-      display: flex; justify-content: space-around;
-      border-top: 1px solid var(--rule);
-      margin-top: 40px; padding: 20px 0;
     }
   </style>
 </head>
