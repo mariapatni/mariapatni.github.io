@@ -2,6 +2,7 @@ const NAV_LINKS = [
   { label: 'Home', route: '/index.html' },
   { label: 'Experience', route: '/experience.html' },
   { label: 'Projects', route: '/projects.html' },
+  { label: 'Pints & Pottery', route: '/pints-pottery.html' },
 ];
 
 const FOOTER_HTML = `

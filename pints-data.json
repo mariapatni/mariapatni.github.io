@@ -1,0 +1,17 @@
+[
+  {
+    "image": "/pints-pottery/images/example-1.jpg",
+    "title": "",
+    "description": "Placeholder tile — replace this image filename and description. Drop a photo into /pints-pottery/images/ and point this entry at it."
+  },
+  {
+    "image": "/pints-pottery/images/example-2.jpg",
+    "title": "",
+    "description": "Another placeholder. Title is optional — leave it as \"\" to show just the photo and description."
+  },
+  {
+    "image": "/pints-pottery/images/example-3.jpg",
+    "title": "",
+    "description": "Third placeholder so you can see the grid layout before adding real photos."
+  }
+]

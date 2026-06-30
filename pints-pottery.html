@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pints & Pottery — Maria Patni</title>
+  <meta name="description" content="Pints & Pottery — photos by Maria Patni." />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" data-route="/styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Top Navigation Bar -->
+    <section class="masthead" style="position: relative;">
+      <div data-layout="nav"></div>
+    </section>
+
+    <h1 class="page-title">Pints & Pottery</h1>
+    <p class="subtitle">things I've made, sipped, and shaped</p>
+
+    <section class="project-grid" aria-label="Pints & Pottery tiles">
+      <!-- Photo card: picture + short description, no tags row. -->
+      <template id="photo-card-template">
+        <article class="project-card project-card--photo">
+          <div class="project-card__image" role="presentation"></div>
+          <div class="project-card__text">
+            <h2 class="project-card__title"></h2>
+            <p class="project-card__description"></p>
+          </div>
+        </article>
+      </template>
+      <div id="projectGrid"></div>
+    </section>
+
+    <div data-layout="footer"></div>
+  </div>
+  <script src="menu.js"></script>
+  <script>
+    async function renderPintsFromJson() {
+      const grid = document.getElementById('projectGrid');
+      if (!grid) return;
+
+      try {
+        const response = await fetch('pints-data.json');
+        if (!response.ok) {
+          throw new Error(`Failed to load pints-data.json (${response.status})`);
+        }
+        const items = await response.json();
+        const template = document.getElementById('photo-card-template');
+        items.forEach((item) => {
+          const clone = template.content.cloneNode(true);
+          const image = clone.querySelector('.project-card__image');
+          if (item.image) {
+            image.style.backgroundImage = `url('${item.image}')`;
+          }
+          const titleEl = clone.querySelector('.project-card__title');
+          if (item.title && item.title.trim()) {
+            titleEl.textContent = item.title;
+          } else {
+            titleEl.remove();
+          }
+          clone.querySelector('.project-card__description').textContent =
+            (item.description || '').trim();
+          grid.appendChild(clone.querySelector('.project-card'));
+        });
+      } catch (error) {
+        console.error('Unable to render pints & pottery:', error);
+        grid.innerHTML = '<p>Photos will be available soon. Check back later.</p>';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', renderPintsFromJson);
+  </script>
+</body>
+</html>
