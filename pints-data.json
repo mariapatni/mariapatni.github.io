@@ -1,17 +1,27 @@
 [
   {
-    "image": "/pints-pottery/images/example-1.jpg",
+    "image": "/pints-pottery/images/mint-chocolate-chip.jpg",
     "title": "",
-    "description": "Placeholder tile — replace this image filename and description. Drop a photo into /pints-pottery/images/ and point this entry at it."
+    "description": "mint chocolate chip"
   },
   {
-    "image": "/pints-pottery/images/example-2.jpg",
+    "image": "/pints-pottery/images/rose-cardamom.jpg",
     "title": "",
-    "description": "Another placeholder. Title is optional — leave it as \"\" to show just the photo and description."
+    "description": "rose cardamom"
   },
   {
-    "image": "/pints-pottery/images/example-3.jpg",
+    "image": "/pints-pottery/images/fig.jpg",
     "title": "",
-    "description": "Third placeholder so you can see the grid layout before adding real photos."
+    "description": "fig"
+  },
+  {
+    "image": "/pints-pottery/images/thrown-vase.jpg",
+    "title": "",
+    "description": "thrown vase"
+  },
+  {
+    "image": "/pints-pottery/images/matcha-glasses-incense.jpg",
+    "title": "",
+    "description": "matcha glasses + incense"
   }
 ]
