@@ -167,6 +167,13 @@ a {
     display: block;
 }
 
+/* Photo card variant: picture + short description, no tags row.
+   Used on pints-pottery.html. Reuses .project-card styling and just
+   rebalances the grid to two rows (larger image, smaller text). */
+.project-card--photo {
+    grid-template-rows: 78% 22%;
+}
+
 @media (max-width: 900px) {
     #projectGrid {
         grid-template-columns: 1fr;
@@ -175,6 +182,10 @@ a {
     .project-card {
         height: auto;
         grid-template-rows: auto auto auto;
+    }
+
+    .project-card--photo {
+        grid-template-rows: auto auto;
     }
 
     .project-card__image {
