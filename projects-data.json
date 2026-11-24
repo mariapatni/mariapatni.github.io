@@ -16,18 +16,6 @@
     "date": "2025-11-25"
   },
   {
-    "slug": "tree-trunk-detection",
-    "title": "Tree Trunk Detection with RF-Detr",
-    "description": "RF detr just got released and I decided to mess around with it on a really small dataset!",
-    "coverPath": "/blogs/tree-trunk-detection/images/cover.png",
-    "tags": [
-      "RF-Detr",
-      "Perception"
-    ],
-    "url": "https://docs.google.com/presentation/d/1CJHB8juFkBjVsIn-kvQgXJEzjINSOdCSwwqv0TcPPps/edit",
-    "date": "2025-10-10"
-  },
-  {
     "slug": "curious_TARFS",
     "title": "Curious TARFS",
     "description": "Learning relationships between sight and feel for objects, soft and hard.",
@@ -46,14 +34,14 @@
   {
     "slug": "frc_2020",
     "title": "FRC 2020",
-    "description": "Designed drivetrain, storage, & intake mechanisms. <br><br> Years later, I did a deep dive on our design, analyzing structural integrity, flaws, etc. Click the tile to see!",
+    "description": "Designed drivetrain, storage, & intake mechanisms. <br><br> Years later, I did a deep dive on our design, analyzing structural integrity, flaws, etc. Click the tile to read it!",
     "coverPath": "/blogs/frc_2020/images/cover.JPG",
     "tags": [
       "FRC",
       "CAD",
       "Prototyping"
     ],
-    "url": "https://docs.google.com/presentation/d/1AouteYFL6P9DMjL1s9PPVObFGOxiIq_GG-q0FF4FC84/edit",
+    "url": "/blogs/frc_2020/",
     "date": "2020-09-01"
   },
   {

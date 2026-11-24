@@ -5,12 +5,18 @@
  *
  * Rerun `node scripts/generate-projects.js` whenever you add, rename, or
  * remove a `/blogs/<project>` folder so `projects-data.json` is up to date.
+ *
+ * Drafts: set `draft: true` on a project below to hide its tile from the site,
+ * and delete that line (or set it to false) to show it again. To preview drafts
+ * locally, run `node scripts/generate-projects.js --drafts` (don't commit the
+ * resulting projects-data.json; the deploy workflow regenerates it without them).
  */
 const fs = require('fs');
 const path = require('path');
 
 const BLOGS_DIR = path.join(__dirname, '..', 'blogs');
 const OUT_FILE = path.join(__dirname, '..', 'projects-data.json');
+const INCLUDE_DRAFTS = process.argv.includes('--drafts');
 
 const PROJECT_METADATA = {
   'repairing-server': {
@@ -28,10 +34,10 @@ const PROJECT_METADATA = {
   },
   'frc_2020': {
     title: 'FRC 2020',
-    description: 'Designed drivetrain, storage, & intake mechanisms. <br><br> Years later, I did a deep dive on our design, analyzing structural integrity, flaws, etc. Click the tile to see!',
+    description: 'Designed drivetrain, storage, & intake mechanisms. <br><br> Years later, I did a deep dive on our design, analyzing structural integrity, flaws, etc. Click the tile to read it!',
     tags: ['FRC', 'CAD', 'Prototyping'],
     date: '2020-09-01',
-    url: 'https://docs.google.com/presentation/d/1AouteYFL6P9DMjL1s9PPVObFGOxiIq_GG-q0FF4FC84/edit',
+    url: '/blogs/frc_2020/',
   },
   'frc_2019': {
     title: 'FRC 2019',
@@ -52,6 +58,7 @@ const PROJECT_METADATA = {
     date: '2018-08-01',
   },
   'tree-trunk-detection': {
+    draft: true,
     title: 'Tree Trunk Detection with RF-Detr',
     description: 'RF detr just got released and I decided to mess around with it on a really small dataset!',
     tags: ['RF-Detr', 'Perception'],
@@ -89,6 +96,7 @@ function gatherProjects() {
   return fs
     .readdirSync(BLOGS_DIR, { withFileTypes: true })
     .filter((dirent) => dirent.isDirectory())
+    .filter((dirent) => INCLUDE_DRAFTS || !PROJECT_METADATA[dirent.name]?.draft)
     .map((dirent) => {
       const slug = dirent.name;
       const blogDir = path.join(BLOGS_DIR, slug);

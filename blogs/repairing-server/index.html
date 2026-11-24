@@ -279,6 +279,26 @@
       .oom-crop {
         width: 100%;
       }
+      .terminals-container {
+        flex-direction: column;
+      }
+      .blog-content code {
+        overflow-wrap: anywhere;
+      }
+      .blog-content pre code {
+        overflow-wrap: normal;
+      }
+      .blog-content table {
+        table-layout: auto;
+      }
+      .blog-content table th,
+      .blog-content table td {
+        min-width: 130px;
+      }
+      .blog-content table th:last-child,
+      .blog-content table td:last-child {
+        min-width: 240px;
+      }
       .blog-content table {
         display: block;
         overflow-x: auto;
@@ -474,7 +494,8 @@
         <p>Adding one word to a boot configuration file: <code>"nokaslr"</code></p>
       </div>
 
-      <img src="images/grub-file.jpg" alt="GRUB configuration file with nokaslr setting" />
+      <pre><code># /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash iommu=pt pcie_aspm=off nvidia.NVreg_EnableResizableBar=1 nokaslr pci=realloc"</code></pre>
 
       <p>After I changed that setting, our burn test worked!</p>
 

@@ -1,27 +1,74 @@
 [
   {
-    "image": "/pints-pottery/images/mint-chocolate-chip.jpg",
+    "side": "pints",
+    "image": "/pints-pottery/images/matcha-rose-poster.jpg",
     "title": "",
-    "description": "mint chocolate chip"
+    "description": "matcha rose",
+    "video": "/pints-pottery/videos/matcha-rose.mp4",
+    "focus": "50% 52%",
+    "wide": true
   },
   {
+    "side": "pints",
+    "image": "/pints-pottery/images/maple-bourbon-butter-pecan.jpg",
+    "title": "",
+    "description": "maple bourbon butter pecan"
+  },
+  {
+    "side": "pints",
+    "image": "/pints-pottery/images/pear-cardamom.jpg",
+    "title": "",
+    "description": "pear cardamom"
+  },
+  {
+    "side": "pints",
+    "image": "/pints-pottery/images/raspberry-vanilla.jpg",
+    "title": "",
+    "description": "raspberry vanilla"
+  },
+  {
+    "side": "pints",
+    "image": "/pints-pottery/images/mint-chocolate-chip.jpg",
+    "title": "",
+    "description": "mint chocolate chip (from fresh leaves)"
+  },
+  {
+    "side": "pints",
     "image": "/pints-pottery/images/rose-cardamom.jpg",
     "title": "",
     "description": "rose cardamom"
   },
   {
+    "side": "pints",
     "image": "/pints-pottery/images/fig.jpg",
     "title": "",
     "description": "fig"
   },
   {
+    "side": "pottery",
+    "image": "/pints-pottery/images/watering-can.jpg",
+    "title": "",
+    "description": "small watering can for small plants",
+    "wide": true,
+    "focus": "35% 50%"
+  },
+  {
+    "side": "pottery",
+    "image": "/pints-pottery/images/vase.jpg",
+    "title": "",
+    "description": "vase"
+  },
+  {
+    "side": "pottery",
     "image": "/pints-pottery/images/thrown-vase.jpg",
     "title": "",
     "description": "thrown vase"
   },
   {
+    "side": "pottery",
     "image": "/pints-pottery/images/matcha-glasses-incense.jpg",
     "title": "",
-    "description": "matcha glasses + incense"
+    "description": "matcha glasses + incense",
+    "wide": true
   }
 ]

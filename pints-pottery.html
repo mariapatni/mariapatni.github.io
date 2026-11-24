@@ -6,7 +6,8 @@
   <title>Pints & Pottery — Maria Patni</title>
   <meta name="description" content="Pints & Pottery — photos by Maria Patni." />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" data-route="/styles.css">
+  <!-- Linked directly (not via data-route) so the mosaic can measure the styled page right away -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
@@ -19,54 +20,195 @@
     <h1 class="page-title">Pints & Pottery</h1>
     <p class="subtitle">things I've churned & thrown from scratch</p>
 
-    <section class="project-grid" aria-label="Pints & Pottery tiles">
-      <!-- Photo card: picture + short description, no tags row. -->
-      <template id="photo-card-template">
-        <article class="project-card project-card--photo">
-          <div class="project-card__image" role="presentation"></div>
-          <div class="project-card__text">
-            <h2 class="project-card__title"></h2>
-            <p class="project-card__description"></p>
-          </div>
-        </article>
-      </template>
-      <div id="projectGrid"></div>
-    </section>
+    <ul class="mosaic-key" aria-label="Tile colors">
+      <li class="mosaic-key__pints">pints</li>
+      <li class="mosaic-key__pottery">pottery</li>
+    </ul>
+
+    <!-- Filled from pints-data.json: order and tile sizes are reshuffled on every load. -->
+    <div class="mosaic" id="mosaic"></div>
+
+    <p class="mosaic-note">+ a bunch of other flavors & pieces I forgot to take pictures of</p>
 
     <div data-layout="footer"></div>
   </div>
   <script src="menu.js"></script>
   <script>
-    async function renderPintsFromJson() {
-      const grid = document.getElementById('projectGrid');
-      if (!grid) return;
+    function buildMedia(item) {
+      let media;
+      if (item.video) {
+        // Plays like a photo: muted, looping, inline. People who ask for less motion get controls instead.
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        media = document.createElement('video');
+        media.muted = true;
+        media.loop = true;
+        media.playsInline = true;
+        media.setAttribute('muted', '');
+        media.setAttribute('playsinline', '');
+        media.autoplay = !reduceMotion;
+        media.controls = reduceMotion;
+        if (item.image) media.poster = item.image;
+        media.setAttribute('aria-label', item.description || '');
+        media.src = item.video;
+      } else {
+        media = document.createElement('img');
+        media.loading = 'lazy';
+        media.alt = item.description || '';
+        media.src = item.image;
+      }
+      if (item.focus) media.style.objectPosition = item.focus;
+      return media;
+    }
 
+    // One seed per page load: refreshing reshuffles, resizing the window doesn't.
+    const SEED = Math.floor(Math.random() * 2 ** 32);
+
+    function seededRandom(seed) {
+      return () => {
+        seed = (seed + 0x6d2b79f5) | 0;
+        let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 2 ** 32;
+      };
+    }
+
+    function shuffle(list, random) {
+      const out = list.slice();
+      for (let i = out.length - 1; i > 0; i--) {
+        const j = Math.floor(random() * (i + 1));
+        [out[i], out[j]] = [out[j], out[i]];
+      }
+      return out;
+    }
+
+    // Keep slicing the rectangle in two until each tile has its own piece, so there are never gaps.
+    function slice(tiles, x, y, w, h, random, out) {
+      if (tiles.length === 1) {
+        out.push({ tile: tiles[0], x, y, w, h });
+        return;
+      }
+      const middle = tiles.length * (0.35 + random() * 0.3);
+      const cut = Math.min(tiles.length - 1, Math.max(1, Math.round(middle)));
+      const sum = (list) => list.reduce((total, t) => total + t.weight, 0);
+      const first = tiles.slice(0, cut);
+      const rest = tiles.slice(cut);
+      const share = sum(first) / sum(tiles);
+      if (w / h > 0.75 + random() * 0.5) {
+        slice(first, x, y, w * share, h, random, out);
+        slice(rest, x + w * share, y, w * (1 - share), h, random, out);
+      } else {
+        slice(first, x, y, w, h * share, random, out);
+        slice(rest, x, y + h * share, w, h * (1 - share), random, out);
+      }
+    }
+
+    // Give wide photos the wide pieces and tall photos the tall ones. (The shuffle decides ties.)
+    function matchShapes(layout) {
+      const pieces = layout.slice().sort((a, b) => a.w / a.h - b.w / b.h);
+      const tiles = layout.map((piece) => piece.tile).sort((a, b) => a.ratio - b.ratio);
+      pieces.forEach((piece, i) => { piece.tile = tiles[i]; });
+    }
+
+    // How much of the worst-cropped photo stays visible (0 to 1), or a negative number if a tile is too small.
+    function rateLayout(layout, frame) {
+      let worst = 1;
+      let smallest = Infinity;
+      let largest = 0;
+      for (const { tile, w, h } of layout) {
+        const photoW = w - frame.gap - frame.pad * 2;
+        const captionLines = Math.ceil((tile.item.description || '').length * 7.6 / photoW);
+        const photoH = h - frame.gap - frame.pad - (16 + captionLines * 18);
+        if (photoW < frame.minW || photoH < frame.minH) return -1;
+        const ratio = photoW / photoH;
+        worst = Math.min(worst, ratio / tile.ratio, tile.ratio / ratio);
+        smallest = Math.min(smallest, photoW * photoH);
+        largest = Math.max(largest, photoW * photoH);
+      }
+      // Prefer layouts where tile sizes really differ.
+      return worst - Math.max(0, 2.4 - largest / smallest) * 0.15;
+    }
+
+    function layOut(mosaic, tiles) {
+      const width = mosaic.clientWidth;
+      if (!width || !tiles.length) return;
+      const small = width < 560;
+      const frame = small
+        ? { gap: 8, pad: 6, minW: width < 320 ? 96 : 108, minH: 84 }
+        : { gap: 14, pad: 10, minW: 150, minH: 140 };
+      const area = small ? 46000 : Math.min(128000, 60000 + width * 62);
+      const random = seededRandom(SEED);
+
+      let best = null;
+      for (let attempt = 0; attempt < 2500; attempt++) {
+        const height = (tiles.length * area / width) * (0.9 + random() * 0.3);
+        const weighted = shuffle(tiles, random).map((t) => ({ ...t, weight: 0.65 + random() * 1.35 }));
+        const layout = [];
+        slice(weighted, 0, 0, width, height, random, layout);
+        matchShapes(layout);
+        const rating = rateLayout(layout, frame);
+        if (!best || rating > best.rating) best = { rating, layout, height };
+        if (attempt > 150 && best.rating > 0.7) break;
+      }
+
+      mosaic.style.height = `${best.height}px`;
+      for (const { tile, x, y, w, h } of best.layout) {
+        Object.assign(tile.card.style, {
+          left: `${x + frame.gap / 2}px`,
+          top: `${y + frame.gap / 2}px`,
+          width: `${w - frame.gap}px`,
+          height: `${h - frame.gap}px`,
+        });
+        mosaic.appendChild(tile.card); // match reading order to what's on screen
+      }
+    }
+
+    async function renderPintsFromJson() {
+      const mosaic = document.getElementById('mosaic');
       try {
         const response = await fetch('pints-data.json');
         if (!response.ok) {
           throw new Error(`Failed to load pints-data.json (${response.status})`);
         }
-        const items = await response.json();
-        const template = document.getElementById('photo-card-template');
-        items.forEach((item) => {
-          const clone = template.content.cloneNode(true);
-          const image = clone.querySelector('.project-card__image');
-          if (item.image) {
-            image.style.backgroundImage = `url('${item.image}')`;
-          }
-          const titleEl = clone.querySelector('.project-card__title');
-          if (item.title && item.title.trim()) {
-            titleEl.textContent = item.title;
-          } else {
-            titleEl.remove();
-          }
-          clone.querySelector('.project-card__description').textContent =
-            (item.description || '').trim();
-          grid.appendChild(clone.querySelector('.project-card'));
+        const items = (await response.json()).filter((item) => {
+          const known = item.side === 'pints' || item.side === 'pottery';
+          if (!known) console.warn('Skipping item without a valid side:', item);
+          return known;
         });
+
+        const tiles = items.map((item) => {
+          const card = document.createElement('figure');
+          card.className = `tile tile--${item.side}`;
+          const photo = document.createElement('div');
+          photo.className = 'tile__photo';
+          photo.appendChild(buildMedia(item));
+          const caption = document.createElement('figcaption');
+          if (item.title && item.title.trim()) {
+            const title = document.createElement('strong');
+            title.textContent = item.title;
+            caption.appendChild(title);
+          }
+          caption.append((item.description || '').trim());
+          card.append(photo, caption);
+          const ratio = item.video ? 1 : item.wide ? 4 / 3 : 3 / 4;
+          return { item, card, ratio };
+        });
+
+        layOut(mosaic, tiles);
+        let lastWidth = mosaic.clientWidth;
+        let pending;
+        new ResizeObserver(() => {
+          if (mosaic.clientWidth === lastWidth) return;
+          clearTimeout(pending);
+          pending = setTimeout(() => {
+            lastWidth = mosaic.clientWidth;
+            layOut(mosaic, tiles);
+            mosaic.querySelectorAll('video[autoplay]').forEach((v) => v.play().catch(() => {}));
+          }, 80);
+        }).observe(mosaic);
+        mosaic.querySelectorAll('video[autoplay]').forEach((v) => v.play().catch(() => {}));
       } catch (error) {
         console.error('Unable to render pints & pottery:', error);
-        grid.innerHTML = '<p>Photos will be available soon. Check back later.</p>';
+        mosaic.innerHTML = '<p>Photos will be available soon. Check back later.</p>';
       }
     }
 

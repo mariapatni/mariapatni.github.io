@@ -10,18 +10,27 @@ Drop your photos here, then add a matching entry to `/pints-data.json`
 
    ```json
    {
+     "side": "pottery",
      "image": "/pints-pottery/images/cortado.jpg",
      "title": "",
      "description": "A short caption for the photo."
    }
    ```
 
+   - `side` — `"pints"` (ice cream) or `"pottery"`. Required; picks the tile color.
    - `image` — root-relative path to the photo (must start with `/pints-pottery/images/`).
    - `description` — the short text under the photo. Required.
    - `title` — optional. Leave it as `""` to show just the photo + description;
      fill it in for a small heading above the description.
 
-3. Tiles render in the order they appear in the JSON. Reorder the array to reorder the grid.
+   - `wide` — optional. Set to `true` for landscape photos so they aren't cropped to portrait.
+   - `focus` — optional. Which part of the photo to keep when it's cropped, e.g. `"50% 55%"`.
+   - `video` — optional. Path to an `.mp4` in `pints-pottery/videos/`; it plays muted on a
+     loop and `image` becomes the still frame shown while it loads.
+
+   Photos from a phone contain GPS location. Strip it before committing.
+
+3. Tile order and sizes are reshuffled on every page load, so the order in the JSON doesn't matter.
 
 No build step is needed for this section — `pints-pottery.html` fetches
 `pints-data.json` directly at page load, so committing the JSON + image is enough.

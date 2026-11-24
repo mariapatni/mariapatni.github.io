@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FRC 2020 Deep Dive — Maria Patni</title>
+  <meta name="description" content="A deep dive into the design of my FRC 2020 robot by Maria Patni." />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" data-route="/styles.css">
+  <style>
+    .post h2 { font-size: 1.6rem; margin: 52px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--rule); }
+    .post h3 { font-size: 1.2rem; margin: 32px 0 10px; }
+    .post ul, .post ol { padding-left: 24px; }
+    .post li { margin: 6px 0; }
+    .post a { text-decoration: underline; }
+
+    .post figure { margin: 24px 0; }
+    .post figure img, .post figure video { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--rule); background: #fff; }
+    .post figcaption { margin-top: 6px; font-size: 0.8rem; color: var(--muted); text-align: center; font-style: italic; }
+    .post .small { max-width: 520px; margin-left: auto; margin-right: auto; }
+
+    /* Rows of figures; they stack on phones */
+    .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min, 240px)), 1fr)); gap: 16px; margin: 24px 0; align-items: start; }
+    .row figure { margin: 0; }
+    .row.even figure img { background: #ebebeb; }
+    .row.even figure img, .row.even figure video { aspect-ratio: var(--ratio, 1); object-fit: contain; }
+
+    .callout { background: var(--chip); border-left: 4px solid var(--link); padding: 14px 18px; border-radius: 4px; }
+    .callout strong { display: block; margin-bottom: 4px; }
+    .callout.before { border-left-color: #b5533c; }
+    .callout ul { margin: 0; padding-left: 20px; }
+
+    .scroll-x { overflow-x: auto; margin: 20px 0; -webkit-overflow-scrolling: touch; }
+    .post table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .post th, .post td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .post th { background: var(--chip); font-weight: 600; }
+
+    .calc { background: #fff; border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; font-size: 0.82rem; overflow-x: auto; line-height: 1.7; margin: 0; }
+    details { margin: 20px 0; }
+    summary { cursor: pointer; font-weight: 600; }
+
+    .timeline { display: grid; grid-template-columns: 84px repeat(18, minmax(30px, 1fr)); gap: 5px; min-width: 720px; font-size: 0.72rem; text-align: center; line-height: 1.3; }
+    .timeline > div { padding: 8px 4px; border-radius: 6px; background: #f3e3cc; }
+    .timeline .wk { background: var(--chip); font-weight: 600; }
+    .timeline .label { background: none; text-align: left; padding-left: 0; font-weight: 600; }
+    .timeline .all { background: #dbe8d3; }
+    .timeline .season { background: #efd0cb; }
+    .timeline .driver { display: grid; place-items: center; }
+
+    .outcomes { list-style: none; padding-left: 0 !important; }
+    .outcomes li { display: grid; grid-template-columns: 2.6em 1fr; }
+
+    .video-embed { position: relative; aspect-ratio: 16 / 9; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 12px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Top Navigation Bar -->
+    <section class="masthead" style="position: relative;">
+      <div data-layout="nav"></div>
+    </section>
+
+    <h1 class="page-title">FRC 2020</h1>
+    <p class="subtitle">a deep dive into my robot, years later</p>
+
+    <div class="post">
+      <p>I was part of the FIRST Robotics Competition in high school: a mechanical designer from 2017 to 2019, and team captain from 2019 to 2021.</p>
+      <p>Every January, FIRST releases a new game. <strong>You only have 6 weeks to design, fabricate, assemble, wire up, and code your robot from scratch.</strong> These robots are big (around 150 lbs!) and primarily teleoperated, with a small autonomous portion.</p>
+
+      <figure>
+        <img src="images/team.jpg" alt="Team 3061 with a competition robot" />
+      </figure>
+
+      <div class="row even" style="--min: 95px;">
+        <figure><img loading="lazy" src="images/robot-2018.jpg" alt="CAD of the 2018 robot" /><figcaption>designer</figcaption></figure>
+        <figure><img loading="lazy" src="images/robot-2019.jpg" alt="CAD of the 2019 robot" /><figcaption>→ lead</figcaption></figure>
+        <figure><img loading="lazy" src="images/robot-2020.jpg" alt="CAD of the 2020 robot" /><figcaption>→ team captain</figcaption></figure>
+      </div>
+
+      <h2>The Robot</h2>
+      <h3>Objectives</h3>
+      <ul>
+        <li>Collect balls, and shoot them into the goals at the end of the field.</li>
+        <li>In the last 30 seconds of a match, climb and hang from a swinging metal bar with up to 2 other robots.</li>
+      </ul>
+      <figure>
+        <img loading="lazy" src="images/field.jpg" alt="The 2020 FRC field" />
+        <figcaption>the 2020 field</figcaption>
+      </figure>
+
+      <h3>Overview</h3>
+      <p>The parts I designed are in <strong>bold</strong> below, and in blue in the third image.</p>
+      <ul>
+        <li>Collect & shoot: <strong>intake</strong>, <strong>ball storage / conveyor</strong>, flywheel shooter</li>
+        <li>Climber: cascading elevator</li>
+        <li>Misc: <strong>drivetrain</strong></li>
+      </ul>
+      <div class="row even" style="--min: 140px; --ratio: 9 / 10;">
+        <figure><img loading="lazy" src="images/overview-front.jpg" alt="CAD of the full robot, front view" /></figure>
+        <figure><img loading="lazy" src="images/overview-back.jpg" alt="CAD of the full robot, rear view" /></figure>
+        <figure><img loading="lazy" src="images/overview-mine.jpg" alt="CAD of the robot with the intake, storage and drivetrain in blue" /></figure>
+      </div>
+
+      <h3>Timeline</h3>
+      <div class="scroll-x" tabindex="0" aria-label="Build and competition season timeline">
+        <div class="timeline">
+          <div class="label" style="grid-area: 1 / 1;"></div>
+          <div class="wk" style="grid-area: 1 / 2 / auto / span 2;">Week 1</div>
+          <div class="wk" style="grid-area: 1 / 4 / auto / span 2;">Week 2</div>
+          <div class="wk" style="grid-area: 1 / 6 / auto / span 2;">Week 3</div>
+          <div class="wk" style="grid-area: 1 / 8 / auto / span 2;">Week 4</div>
+          <div class="wk" style="grid-area: 1 / 10 / auto / span 2;">Week 5</div>
+          <div class="wk" style="grid-area: 1 / 12 / auto / span 2;">Week 6</div>
+          <div class="wk" style="grid-area: 1 / 14 / auto / span 6;">after the hard stop</div>
+
+          <div class="label" style="grid-area: 2 / 1;">Scoring</div>
+          <div style="grid-area: 2 / 2 / auto / span 4;">Prototyping</div>
+          <div style="grid-area: 2 / 6 / auto / span 3;">CAD</div>
+          <div style="grid-area: 2 / 9 / auto / span 2;">Fab + Assembly</div>
+          <div style="grid-area: 2 / 11 / auto / span 2;">Wire + Code</div>
+          <div class="driver" style="grid-area: 2 / 13 / span 2 / span 7;">Driver practice</div>
+
+          <div class="label" style="grid-area: 3 / 1;">Drivetrain</div>
+          <div style="grid-area: 3 / 2 / auto / span 2;">CAD</div>
+          <div style="grid-area: 3 / 4 / auto / span 3;">Fab + Assembly</div>
+          <div style="grid-area: 3 / 7 / auto / span 4;">Wire + Code</div>
+
+          <div style="grid-area: 4 / 11 / auto / span 2;">Fab spare parts</div>
+          <div style="grid-area: 4 / 14 / auto / span 6;">Update designs based on competition</div>
+
+          <div class="all" style="grid-area: 5 / 2 / auto / span 18;">Small iterative design changes throughout</div>
+          <div class="season" style="grid-area: 6 / 2 / auto / span 12;">Build season (6 weeks)</div>
+          <div class="season" style="grid-area: 6 / 14 / auto / span 6;">Comp season (3 weeks)</div>
+        </div>
+      </div>
+
+      <h2>Drivetrain</h2>
+      <h3>Requirements</h3>
+      <p>Our customer (the strategy team) sets the requirements that drive the design:</p>
+      <ol>
+        <li><strong>Go fast.</strong> Travel the length of the field in under 10 seconds.</li>
+        <li><strong>Push other robots around</strong> (150 lbs) that are free standing and in a neutral position.</li>
+        <li><strong>Serviceable in under 6 minutes.</strong> Chain, wheels, and motors must be easy to reach during competition, without removing the gearbox or wheel sub-assemblies.</li>
+        <li>Overcome obstacles up to 1.125" on the ground, and drive over power cells (the balls).</li>
+        <li>120" frame perimeter, 45" max height in the starting configuration.</li>
+      </ol>
+      <figure class="small">
+        <img loading="lazy" src="images/drivetrain-highlight.jpg" alt="Drivetrain in blue within the robot CAD" />
+      </figure>
+
+      <h3>Making space</h3>
+      <p>The drivetrain is a 6-wheel "West Coast" tank drive with a 0.25" drop center wheel, driven by a 2 speed gearbox. I wanted to free up the center of the robot (the red box), so the gearbox had to change:</p>
+      <figure>
+        <img loading="lazy" src="images/drivetrain-space.jpg" alt="Drivetrain CAD with a red box marking the center space of the robot" />
+      </figure>
+      <div class="row" style="--min: 280px;">
+        <div>
+          <figure class="small"><img loading="lazy" src="images/cim-gearbox.jpg" alt="Gearbox with CIM motors" /></figure>
+          <div class="callout before">
+            <strong>Before: CIM motors</strong>
+            <ul>
+              <li>Bulky motors cantilevered on the gearbox plate cause warp</li>
+              <li>Too much depth; takes up space in the center of the robot</li>
+              <li>No motor controller built in</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <figure class="small"><img loading="lazy" src="images/gearbox-a.jpg" alt="Gearbox with stacked Falcon motors" /></figure>
+          <div class="callout">
+            <strong>After: Falcon motors</strong>
+            <ul>
+              <li>Lighter, equally efficient</li>
+              <li>Leverages vertical space by stacking motors above</li>
+              <li>Built in motor controller attachments</li>
+              <li>Steel pinion gears</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3>Gearbox</h3>
+      <p>The 2 speed gearbox uses dog gears and a piston to switch between high and low gear. The output shaft drives a sprocket and the center wheel; the outer wheels are connected via chain.</p>
+      <div class="scroll-x">
+        <table>
+          <thead><tr><th>Stage</th><th>Gears</th><th>Overall ratio</th><th>Speed</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>14T → 42T</td><td>3.00 : 1</td><td></td></tr>
+            <tr><td>2</td><td>14T → 60T</td><td>12.86 : 1</td><td></td></tr>
+            <tr><td>3, low gear</td><td>30T → 44T</td><td><strong>18.86 : 1</strong></td><td><strong>8.9 ft/s</strong></td></tr>
+            <tr><td>3, high gear</td><td>34T → 40T</td><td><strong>15.13 : 1</strong></td><td><strong>11.1 ft/s</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Pushing force: 150 lb robot × 1.19 coefficient of friction = <strong>794 N</strong>.</p>
+
+      <details>
+        <summary>Show me the math</summary>
+        <div class="row" style="--min: 300px;">
+<pre class="calc"><strong>Gear ratios</strong>
+42 / 14 = 3.00
+60 / 14 = 4.286
+3.00 * 4.286 = 12.86 : 1
+
+low:  44 / 30 = 1.467  →  18.86 : 1
+high: 40 / 34 = 1.176  →  15.13 : 1</pre>
+<pre class="calc"><strong>Speed</strong>
+motor = 6380 RPM
+6" wheels = 0.4788 m / rev
+
+v = (RPM / ratio) * 0.4788 m
+    * (1 min / 60 s) * (3.281 ft / 1 m)
+
+v_low  = 8.9 ft/s
+v_high = 11.1 ft/s</pre>
+<pre class="calc"><strong>Torque</strong>
+3 motors, 4.69 N·m stall torque each
+
+theoretical = stall * 3 * ratio
+  low  = 265 N·m
+  high = 213 N·m
+
+max friction force = 794 N
+  → 397 N per side
+T_axle = F * r
+       = 397 N * 0.0762 m
+       = 30.3 N·m per gearbox</pre>
+        </div>
+      </details>
+      <p>The motors can put out far more torque than the wheels can use: pushing power is limited by weight and coefficient of friction.</p>
+
+      <h3>Outcomes</h3>
+      <ul class="outcomes">
+        <li><span>✅</span><span>Go slow & fast</span></li>
+        <li><span>✅</span><span>Push other robots around</span></li>
+        <li><span>✅❌</span><span>Serviceable in under 6 minutes (?)</span></li>
+        <li><span>✅</span><span>Overcome ground obstacles</span></li>
+      </ul>
+      <figure>
+        <video controls muted playsinline preload="none" poster="images/pushing-poster.jpg" width="960" height="540"><source src="videos/pushing.mp4" type="video/mp4" /></video>
+        <figcaption>pushing practice against one of our older robots</figcaption>
+      </figure>
+      <p>At competition, we were the <strong>#1 defensive robot</strong> and the 1st pick of Alliance 7, eliminated at semifinals.</p>
+      <figure>
+        <div class="video-embed"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/AoNw0rDO4oE" title="Qualification 68, 2020 Midwest Regional" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+        <figcaption>Qualification 68, 2020 Midwest Regional</figcaption>
+      </figure>
+
+      <h2>Intake</h2>
+      <h3>Requirements</h3>
+      <ol>
+        <li><strong>"Touch own":</strong> perfect driver alignment is not necessary.</li>
+        <li><strong>Can withstand high speed collisions.</strong></li>
+        <li>Easily picks up from a variety of positions: open ground, against a wall, against a robot, in a corner.</li>
+        <li>Does not jam.</li>
+      </ol>
+      <figure class="small">
+        <img loading="lazy" src="images/intake-highlight.jpg" alt="Intake in blue within the robot CAD" />
+      </figure>
+
+      <h3>Mecanum wheels</h3>
+      <p>3D printed 2" mecanum wheels "suck in" and direct power cells towards the center of the robot, into storage.</p>
+      <div class="row even" style="--min: 140px;">
+        <figure><img loading="lazy" src="images/mecanum.jpg" alt="3D printed mecanum wheel CAD" /></figure>
+        <figure><img loading="lazy" src="images/mecanum-direction.jpg" alt="Arrows showing how the wheels move balls toward the center" /></figure>
+        <figure><video autoplay muted loop playsinline poster="images/intake-prototype-poster.jpg"><source src="videos/intake-prototype.mp4" type="video/mp4" /></video><figcaption>the prototype</figcaption></figure>
+      </div>
+
+      <h3>A clever* slot</h3>
+      <ul>
+        <li>The intake can start upright to follow frame perimeter rules, then passively falls down.</li>
+        <li>Ensures the <strong>pistons do not bear any load</strong> on impact.</li>
+        <li>Allows the intake to "swallow" the ball.</li>
+      </ul>
+      <div class="row even" style="--min: 140px;">
+        <figure><img loading="lazy" src="images/intake-slot.jpg" alt="CAD of the slotted intake plate in blue" /></figure>
+        <figure><img loading="lazy" src="images/slot-photo.jpg" alt="Robot with the slot mechanism holding the intake up" /></figure>
+      </div>
+      <div class="row" style="--min: 280px;">
+        <figure><video autoplay muted loop playsinline poster="images/slot-demo-poster.jpg"><source src="videos/slot-demo.mp4" type="video/mp4" /></video><figcaption>slot demo</figcaption></figure>
+        <figure><video controls muted playsinline preload="none" poster="images/intake-driving-poster.jpg"><source src="videos/intake-driving.mp4" type="video/mp4" /></video><figcaption>collecting balls while driving</figcaption></figure>
+      </div>
+
+      <h3>Surviving collisions</h3>
+      <p>The Delrin blocks and slots are the primary protection from front and side loads:</p>
+      <ul>
+        <li><strong>Slot:</strong> extra long, so there's no load on the pistons.</li>
+        <li><strong>Delrin blocks:</strong> keep front and side loads off the bearings and pistons.</li>
+      </ul>
+      <div class="row even" style="--min: 140px; --ratio: 7 / 6;">
+        <figure><img loading="lazy" src="images/delrin-cad.jpg" alt="CAD with the Delrin blocks in blue" /></figure>
+        <figure><img loading="lazy" src="images/delrin-photo.jpg" alt="Photo of the Delrin blocks on the robot" /></figure>
+      </div>
+
+      <h3>Load analysis</h3>
+      <p>Worst case scenario: a 150 lb robot runs into us at 20 ft/s. Assuming a 0.01 s stopping time, a rigid other robot, and impact only at the Delrin blocks:</p>
+      <div class="scroll-x">
+        <table>
+          <thead><tr><th></th><th>Capacity</th><th>Actual</th></tr></thead>
+          <tbody>
+            <tr><td>Delrin (compression)</td><td>11,000 psi</td><td>7,800 psi</td></tr>
+            <tr><td>Bolts (shear)</td><td>34,320 lbf (¼-20) & 17,160 lbf (8-32)</td><td>9,320 lbf</td></tr>
+            <tr><td>L brackets (bearing)</td><td>8,630 lbf / bracket</td><td>2,330 lbf / bracket</td></tr>
+            <tr><td>L brackets (tensile)</td><td>3,750 lbf / bracket</td><td>2,330 lbf / bracket</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details>
+        <summary>Show me the hand calcs</summary>
+        <div class="row" style="--min: 280px;">
+          <figure><a href="images/calcs-1.jpg" target="_blank" rel="noopener"><img loading="lazy" src="images/calcs-1.jpg" alt="Handwritten calculations for impact force, Delrin contact, bolt shear and L brackets" /></a></figure>
+          <figure><a href="images/calcs-2.jpg" target="_blank" rel="noopener"><img loading="lazy" src="images/calcs-2.jpg" alt="Handwritten calculations for bracket tension and side load" /></a></figure>
+        </div>
+      </details>
+
+      <h3>Outcomes</h3>
+      <ul class="outcomes">
+        <li><span>❌</span><span>Touch own</span></li>
+        <li><span>✅</span><span>Pick up from anywhere</span></li>
+        <li><span>✅*</span><span>Doesn't break under load</span></li>
+        <li><span>✅</span><span>No jamming</span></li>
+      </ul>
+
+      <h2>Storage</h2>
+      <p>Electrical board design:</p>
+      <div class="row even" style="--min: 140px;">
+        <figure><img loading="lazy" src="images/storage-highlight.jpg" alt="Ball storage in blue within the robot CAD" /></figure>
+        <figure><img loading="lazy" src="images/electrical-board-side.jpg" alt="Side view of the electrical board in CAD" /></figure>
+        <figure><img loading="lazy" src="images/electrical-board-cad.jpg" alt="CAD of electronics mounted in the drivetrain" /></figure>
+      </div>
+      <figure>
+        <img loading="lazy" src="images/electrical-board-photo.jpg" alt="The wired electrical board on the real robot" />
+      </figure>
+
+      <h2>Results</h2>
+      <ul>
+        <li>Ranked 14th at the Midwest Regional Competition</li>
+        <li>#1 DPR (defensive robot)</li>
+        <li>The team would have gone to Worlds for the 1st time in 7 years, but COVID :(</li>
+      </ul>
+      <figure class="small">
+        <img loading="lazy" src="images/final-robot.jpg" alt="The finished 2020 robot" />
+      </figure>
+
+      <h2>Lessons Learned</h2>
+      <ul>
+        <li><strong>Systems integration is really important.</strong> It caused a lot of assembly & maintenance headaches.</li>
+        <li><strong>Do we need a dual stage gearbox?</strong></li>
+        <li>Motor pinions could be better supported on the gearbox.</li>
+        <li>How can we reduce exposed wires?</li>
+        <li>Intake analysis: the design is overkill in some respects, under supported in others.</li>
+        <li>Intake prototype: it did not reflect reality with slot compliance.</li>
+      </ul>
+    </div>
+
+    <div data-layout="footer"></div>
+  </div>
+  <script src="../../menu.js"></script>
+</body>
+</html>

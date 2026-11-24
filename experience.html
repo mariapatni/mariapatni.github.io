@@ -45,10 +45,12 @@
 
     .xp-body { margin-top: 6px; }
     .xp-body ul { margin: 6px 0 0 18px; }
+    .xp-body ul ul { margin-top: 2px; }
 
     @media (max-width: 720px) {
       .xp-item { grid-template-columns: 1fr; }
       .logo { width: 48px; height: 48px; }
+      .xp-body ul { padding-left: 12px; }
     }
   </style>
 </head>
@@ -65,11 +67,37 @@
 
     <section class="xp-list">
       <article class="xp-item">
+        <img class="logo" src="images/logos/pave.png" alt="Pave Robotics logo" />
+        <div>
+          <div class="xp-head">
+            <h3 class="xp-title"><span class="company">Pave Robotics</span><span class="role">Founding Engineer</span></h3>
+            <span class="dates">Jan. 2026 - Present</span>
+            <span class="location">San Francisco, CA</span>
+          </div>
+          <div class="xp-body">
+            <ul>
+              <li>Built the entire software stack for Tracer, Pave's flagship robot, with 1 other engineer.</li>
+              <li>Notable systems developed include:
+                <ul>
+                  <li>Camera-to-end-effector calibration process with ±7.5 mm precision, indoors & outdoors</li>
+                  <li>Motion controller for a telepolar gantry</li>
+                  <li>Dynamic flow controller for dispensing crack sealant</li>
+                  <li>Crack segmentation models, trained from scratch</li>
+                  <li>E2E testing flow with both SIL & HIL</li>
+                </ul>
+              </li>
+              <li>Deployed with Caltrans and other local governments in Napa Valley and the Bay Area.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="xp-item">
         <img class="logo" src="images/logos/mmint.png" alt="MMINT Lab logo" />
         <div>
           <div class="xp-head">
             <h3 class="xp-title"><span class="company">Manipulation & Machine Intelligence Lab</span><span class="role">Undergrad Researcher</span></h3>
-            <span class="dates">Sept. 2024 - Dec. 2025</span>
+            <span class="dates">Sept. 2024 - Sept. 2025</span>
             <span class="location">Ann Arbor, MI</span>
           </div>
           <div class="xp-body">

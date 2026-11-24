@@ -35,21 +35,26 @@ a {
     text-decoration: none;
 }
 
+/* The nav sits in normal flow on its own row, so it can never cover the title */
 .masthead {
-    position: relative;
-    padding: 1.2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0.5rem 0 1.2rem;
+}
+
+.masthead > [data-layout="nav"] {
+    order: -1;
+    align-self: flex-end;
+    max-width: 100%;
 }
 
 /* Top navigation */
 .top-nav {
-    position: absolute;
-    top: 8px;
-    right: 0;
     display: flex;
-    gap: 18px;
-    z-index: 2;
-    background: rgba(246, 242, 233, 0.9);
-    backdrop-filter: blur(8px);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 4px 18px;
     padding: 8px 16px;
     border-radius: 8px;
     border: 1px solid var(--rule);
@@ -167,11 +172,111 @@ a {
     display: block;
 }
 
-/* Photo card variant: picture + short description, no tags row.
-   Used on pints-pottery.html. Reuses .project-card styling and just
-   rebalances the grid to two rows (larger image, smaller text). */
-.project-card--photo {
-    grid-template-rows: 78% 22%;
+/* Pints & Pottery: a mosaic of mixed tiles. Positions are set in pints-pottery.html. */
+.mosaic {
+    --pints: #d3e2c3;
+    --pottery: #3f6b52;
+    position: relative;
+    margin: 0 -7px;
+}
+
+.tile {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 10px 10px 0;
+    border-radius: 16px;
+}
+
+.tile--pints {
+    background: var(--pints);
+    color: var(--fg);
+}
+
+.tile--pottery {
+    background: var(--pottery);
+    color: #f6f2e9;
+}
+
+.tile__photo {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    border-radius: 9px;
+    overflow: hidden;
+    background: rgba(27, 67, 50, 0.12);
+}
+
+.tile__photo img,
+.tile__photo video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.tile figcaption {
+    padding: 8px 2px;
+    font-size: 0.76rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.tile figcaption strong {
+    display: block;
+}
+
+.mosaic-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin: 0 0 14px;
+    padding: 0;
+    list-style: none;
+    font-size: 0.85rem;
+}
+
+.mosaic-key li::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    border-radius: 4px;
+    vertical-align: -2px;
+}
+
+.mosaic-key__pints::before {
+    background: #d3e2c3;
+}
+
+.mosaic-key__pottery::before {
+    background: #3f6b52;
+}
+
+.mosaic-note {
+    margin: 28px 0 0;
+    text-align: center;
+    color: var(--muted);
+    font-style: italic;
+    text-wrap: balance;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .tile:hover img,
+    .tile:hover video {
+        transform: scale(1.04);
+    }
+}
+
+/* Let the mosaic run a little wider than the text on big screens */
+@media (min-width: 1120px) {
+    .mosaic {
+        margin: 0 -60px;
+    }
 }
 
 @media (max-width: 900px) {
@@ -182,10 +287,6 @@ a {
     .project-card {
         height: auto;
         grid-template-rows: auto auto auto;
-    }
-
-    .project-card--photo {
-        grid-template-rows: auto auto;
     }
 
     .project-card__image {
@@ -219,6 +320,7 @@ a {
 #menuBackdrop {
     position: fixed;
     inset: 0;
+    z-index: 1002;
     background: rgba(0, 0, 0, 0.35);
     backdrop-filter: saturate(120%) blur(2px);
     opacity: 0;
@@ -239,8 +341,11 @@ a {
     color: var(--fg);
     box-shadow: 0 12px 38px rgba(0, 0, 0, 0.18);
     border-right: 1px solid var(--rule);
+    z-index: 1003;
     transform: translateX(-100%);
-    transition: transform 0.18s ease;
+    visibility: hidden; /* keeps the closed drawer's shadow and links off the page */
+    transition: transform 0.18s ease, visibility 0.18s;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     padding-bottom: 20px;
@@ -248,6 +353,7 @@ a {
 
 #menuDrawer.open {
     transform: translateX(0);
+    visibility: visible;
 }
 
 .menu-profile {
@@ -327,17 +433,63 @@ footer {
     margin-top: 0.3rem; /* Align with first line of text */
 }
 
-/* Mobile chrome: hide top-nav pill, show hamburger */
+/* Mobile chrome: hide top-nav pill, show a slim top bar with the hamburger */
 @media (max-width: 720px) {
     .container {
-        padding: 1.25rem 1.25rem 1.25rem 3.25rem;
+        padding: 64px 1.25rem 1.25rem;
+    }
+
+    .masthead {
+        padding: 0;
+        gap: 0;
     }
 
     .top-nav {
         display: none;
     }
 
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0 0 auto;
+        height: 52px;
+        z-index: 1000;
+        background: var(--bg);
+        border-bottom: 1px solid var(--rule);
+    }
+
     #menuBtn {
         display: flex;
+        top: 4px;
+        left: 8px;
+        padding: 13px 12px;
+    }
+
+    .page-title {
+        font-size: 1.9rem;
+        margin-top: 16px;
+        overflow-wrap: anywhere;
+    }
+
+    footer a {
+        padding: 8px;
+    }
+
+    .mosaic {
+        margin: 0 -8px;
+    }
+
+    .tile {
+        padding: 6px 6px 0;
+        border-radius: 12px;
+    }
+
+    .tile__photo {
+        border-radius: 7px;
+    }
+
+    .tile figcaption {
+        padding: 6px 2px;
+        font-size: 0.7rem;
     }
 }
